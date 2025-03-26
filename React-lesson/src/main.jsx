@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, useEffect } from 'react';
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
@@ -66,14 +66,31 @@ import App from './App.jsx';
 //   </div>
 // );
 
-function Counter() {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <h1>Licznkik: {count}</h1>
-      <button onClick={() => setCount(count + 1)}></button>
-      <button onClick={() => setCount(count - 1)}></button>
-    </div>
-  );
+// function Counter() {
+//   const [count, setCount] = useState(0);
+//   return (
+//     <div>
+//       <h1>Licznkik: {count}</h1>
+//       <button onClick={() => setCount(count + 1)}></button>
+//       <button onClick={() => setCount(count - 1)}></button>
+//     </div>
+//   );
+// }
+
+function WelcomeMessege() {
+  const [mess, setMess] = useState('');
+
+  useEffect(() => {
+    const time = new Date();
+    const hour = time.getHours();
+
+    if (hour < 12) {
+      setMess('Dzień dobry');
+    } else if (hour >= 18) {
+      setMess('Dobry wieczór');
+    } else setMess('Dzień dobry');
+  }, []);
+  return <h1>{mess}</h1>;
 }
-createRoot(document.getElementById('root')).render(<Counter/>);
+
+createRoot(document.getElementById('root')).render(<WelcomeMessege />);
