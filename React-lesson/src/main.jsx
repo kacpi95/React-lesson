@@ -77,20 +77,33 @@ import App from './App.jsx';
 //   );
 // }
 
-function WelcomeMessege() {
-  const [mess, setMess] = useState('');
+// function WelcomeMessege() {
+//   const [mess, setMess] = useState('');
 
-  useEffect(() => {
-    const time = new Date();
-    const hour = time.getHours();
+//   useEffect(() => {
+//     const time = new Date();
+//     const hour = time.getHours();
 
-    if (hour < 12) {
-      setMess('Dzień dobry');
-    } else if (hour >= 18) {
-      setMess('Dobry wieczór');
-    } else setMess('Dzień dobry');
-  }, []);
-  return <h1>{mess}</h1>;
+//     if (hour < 12) {
+//       setMess('Dzień dobry');
+//     } else if (hour >= 18) {
+//       setMess('Dobry wieczór');
+//     } else setMess('Dzień dobry');
+//   }, []);
+//   return <h1>{mess}</h1>;
+// }
+
+function RandomNumber() {
+  const [number, setNumber] = useState(Math.floor(Math.random() * 100) + 1);
+
+  return (
+    <div>
+      <h1>Losowa liczba: {number}</h1>
+      <button onClick={() => setNumber(Math.floor(Math.random() * 100) + 1)}>
+        Losuj nową liczbę
+      </button>
+    </div>
+  );
 }
 
-createRoot(document.getElementById('root')).render(<WelcomeMessege />);
+createRoot(document.getElementById('root')).render(<RandomNumber />);
