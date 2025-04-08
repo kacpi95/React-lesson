@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
@@ -137,15 +138,31 @@ import App from './App.jsx';
 // }
 // createRoot(document.getElementById('root')).render(<CurrentTime />);
 
-function Counter() {
-  const [count, setCount] = useState(0);
+// function Counter() {
+//   const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      <h1>Aktualny stan licznika: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
-    </div>
-  );
+//   return (
+//     <div>
+//       <h1>Aktualny stan licznika: {count}</h1>
+//       <button onClick={() => setCount(count + 1)}>+</button>
+//       <button onClick={() => setCount(count - 1)}>-</button>
+//     </div>
+//   );
+// }
+// createRoot(document.getElementById('root')).render(<Counter />);
+
+function Message() {
+  const [mess, setMess] = useState('');
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour < 18) {
+      setMess('Dzień dobry');
+    } else {
+      setMess('Dobry wieczór');
+    }
+  }, []);
+
+  return <h1>{mess}</h1>;
 }
-createRoot(document.getElementById('root')).render(<Counter />);
+createRoot(document.getElementById('root')).render(<Message />);
