@@ -1,4 +1,4 @@
-import { StrictMode, useEffect } from 'react';
+import { StrictMode } from 'react';
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
@@ -106,15 +106,22 @@ import App from './App.jsx';
 //   );
 // }
 
-function ClickCounter() {
-  const [count, setCount] = useState(0);
+// function ClickCounter() {
+//   const [count, setCount] = useState(0);
 
-  return (
-    <div>
-      <h1>Licznik : {count}</h1>
-      <button onClick={() => setCount(count + 1)}></button>
-    </div>
-  );
+//   return (
+//     <div>
+//       <h1>Licznik : {count}</h1>
+//       <button onClick={() => setCount(count + 1)}></button>
+//     </div>
+//   );
+// }
+
+// createRoot(document.getElementById('root')).render(<ClickCounter />);
+
+function Counter() {
+  const date = new Date().getFullYear();
+  return <h1>Mamy rok: {date}</h1>;
 }
+createRoot(document.getElementById('root')).render(<Counter />);
 
-createRoot(document.getElementById('root')).render(<ClickCounter />);
