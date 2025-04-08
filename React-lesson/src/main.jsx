@@ -119,9 +119,20 @@ import App from './App.jsx';
 
 // createRoot(document.getElementById('root')).render(<ClickCounter />);
 
-function Counter() {
-  const date = new Date().getFullYear();
-  return <h1>Mamy rok: {date}</h1>;
-}
-createRoot(document.getElementById('root')).render(<Counter />);
+// function Counter() {
+//   const date = new Date().getFullYear();
+//   return <h1>Mamy rok: {date}</h1>;
+// }
+// createRoot(document.getElementById('root')).render(<Counter />);
 
+function CurrentTime() {
+  const date = new Date();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  return (
+    <h1>
+      Aktualnie jest : {hours}: {minutes}
+    </h1>
+  );
+}
+createRoot(document.getElementById('root')).render(<CurrentTime />);
