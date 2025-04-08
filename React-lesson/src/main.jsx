@@ -125,14 +125,27 @@ import App from './App.jsx';
 // }
 // createRoot(document.getElementById('root')).render(<Counter />);
 
-function CurrentTime() {
-  const date = new Date();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
+// function CurrentTime() {
+//   const date = new Date();
+//   const hours = date.getHours();
+//   const minutes = date.getMinutes();
+//   return (
+//     <h1>
+//       Aktualnie jest : {hours}: {minutes}
+//     </h1>
+//   );
+// }
+// createRoot(document.getElementById('root')).render(<CurrentTime />);
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
   return (
-    <h1>
-      Aktualnie jest : {hours}: {minutes}
-    </h1>
+    <div>
+      <h1>Aktualny stan licznika: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
+    </div>
   );
 }
-createRoot(document.getElementById('root')).render(<CurrentTime />);
+createRoot(document.getElementById('root')).render(<Counter />);
