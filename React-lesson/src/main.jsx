@@ -207,17 +207,38 @@ import App from './App.jsx';
 
 // createRoot(document.getElementById('root')).render(timer);
 
-const currentDate = new Date();
-const hours = currentDate.getHours();
-const minutes = currentDate.getMinutes();
+// const currentDate = new Date();
+// const hours = currentDate.getHours();
+// const minutes = currentDate.getMinutes();
 
-const formattedHours = hours < 10 ? `0${hours}` : hours;
-const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+// const formattedHours = hours < 10 ? `0${hours}` : hours;
+// const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-const timer = (
-  <div>
-    {formattedHours}:{formattedMinutes}
-  </div>
+// const timer = (
+//   <div>
+//     {formattedHours}:{formattedMinutes}
+//   </div>
+// );
+
+// createRoot(document.getElementById('root')).render(timer);
+
+const label = "Dokumentacja React'a";
+const address = 'https://react.dev';
+
+const element = (
+  <header>
+    <h1>{label}</h1>
+    <nav>
+      <ul>
+        <li>
+          <a href={address}>Strona główna</a>
+        </li>
+        <li>
+          <a href={`${address}/learn`}>{label}</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 );
 
-createRoot(document.getElementById('root')).render(timer);
+createRoot(document.getElementById('root')).render(element);
