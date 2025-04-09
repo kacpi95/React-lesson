@@ -1,6 +1,4 @@
 import { StrictMode } from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
@@ -249,11 +247,30 @@ import App from './App.jsx';
 
 // createRoot(document.getElementById('root')).render(element);
 
+// const element = (
+//   <>
+//     <h1 className='heading'>Mini-formularz</h1>
+//     <label htmlFor='name'>Nazwa:</label>
+//     <input id='name' name='name' />
+//   </>
+// );
+
+// createRoot(document.getElementById('root')).render(element);
+
+function DogImage() {
+  const imageHeight = 100;
+  const imageURL = 'https://zrozumiecreact.pl/dog.jpg';
+  return <img height={imageHeight} src={imageURL} />;
+}
+
 const element = (
   <>
-    <h1 className='heading'>Mini-formularz</h1>
-    <label htmlFor='name'>Nazwa:</label>
-    <input id='name' name='name' />
+    <p>Poniżej znajduje się zdjęcie super psa!</p>
+    <DogImage />
+    <p>Psy są super, dodajmy więc to samo zdjęcie jeszcze raz!</p>
+    <DogImage />
+    <p>Jako, że trójka to szczęśliwa liczba - dodajmy psa po raz trzeci!</p>
+    <DogImage />
   </>
 );
 
