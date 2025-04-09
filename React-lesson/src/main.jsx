@@ -243,8 +243,18 @@ import App from './App.jsx';
 
 // createRoot(document.getElementById('root')).render(element);
 
-const getRandomNumber = () => Math.round(Math.random() * 100);
+// const getRandomNumber = () => Math.round(Math.random() * 100);
 
-const element = <h1>Twoja losowa liczba: {getRandomNumber()}</h1>;
+// const element = <h1>Twoja losowa liczba: {getRandomNumber()}</h1>;
+
+// createRoot(document.getElementById('root')).render(element);
+
+const element = (
+  <>
+    <h1 className='heading'>Mini-formularz</h1>
+    <label htmlFor='name'>Nazwa:</label>
+    <input id='name' name='name' />
+  </>
+);
 
 createRoot(document.getElementById('root')).render(element);
