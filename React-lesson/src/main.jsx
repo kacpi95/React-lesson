@@ -167,41 +167,56 @@ import App from './App.jsx';
 // }
 // createRoot(document.getElementById('root')).render(<Message />);
 
+// const currentDate = new Date();
+
+// const daysWeek = [
+//   'Poniedziałek',
+//   'Wtorek',
+//   'Środa',
+//   'Czwartek',
+//   'Piątek',
+//   'Sobota',
+//   'Niedziela',
+// ];
+// const monthsYear = [
+//   'stycznia',
+//   'lutego',
+//   'marca',
+//   'kwietnia',
+//   'maja',
+//   'czerwca',
+//   'lipca',
+//   'sierpnia',
+//   'września',
+//   'października',
+//   'listopada',
+//   'grudnia',
+// ];
+
+// const day = currentDate.getDay();
+// const year = currentDate.getFullYear();
+// const month = monthsYear[currentDate.getMonth()];
+// const hours = currentDate.getHours();
+// const minutes = currentDate.getMinutes();
+// const days = daysWeek[currentDate.getDay()];
+// const timer = (
+//   <div>
+//     {days}, {day} {month} {year}, godzina: {hours}:{minutes}
+//   </div>
+// );
+
+// createRoot(document.getElementById('root')).render(timer);
+
 const currentDate = new Date();
-
-const daysWeek = [
-  'Poniedziałek',
-  'Wtorek',
-  'Środa',
-  'Czwartek',
-  'Piątek',
-  'Sobota',
-  'Niedziela',
-];
-const monthsYear = [
-  'stycznia',
-  'lutego',
-  'marca',
-  'kwietnia',
-  'maja',
-  'czerwca',
-  'lipca',
-  'sierpnia',
-  'września',
-  'października',
-  'listopada',
-  'grudnia',
-];
-
-const day = currentDate.getDay();
-const year = currentDate.getFullYear();
-const month = monthsYear[currentDate.getMonth()];
 const hours = currentDate.getHours();
 const minutes = currentDate.getMinutes();
-const days = daysWeek[currentDate.getDay()];
+
+const formattedHours = hours < 10 ? `0${hours}` : hours;
+const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
 const timer = (
   <div>
-    {days}, {day} {month} {year}, godzina: {hours}:{minutes}
+    {formattedHours}:{formattedMinutes}
   </div>
 );
 
