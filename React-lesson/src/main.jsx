@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
@@ -257,21 +257,49 @@ import App from './App.jsx';
 
 // createRoot(document.getElementById('root')).render(element);
 
-function DogImage() {
-  const imageHeight = 100;
-  const imageURL = 'https://zrozumiecreact.pl/dog.jpg';
-  return <img height={imageHeight} src={imageURL} />;
+// function DogImage() {
+//   const imageHeight = 100;
+//   const imageURL = 'https://zrozumiecreact.pl/dog.jpg';
+//   return <img height={imageHeight} src={imageURL} />;
+// }
+
+// const element = (
+//   <>
+//     <p>Poniżej znajduje się zdjęcie super psa!</p>
+//     <DogImage />
+//     <p>Psy są super, dodajmy więc to samo zdjęcie jeszcze raz!</p>
+//     <DogImage />
+//     <p>Jako, że trójka to szczęśliwa liczba - dodajmy psa po raz trzeci!</p>
+//     <DogImage />
+//   </>
+// );
+
+// createRoot(document.getElementById('root')).render(element);
+
+function Calculator() {
+  const [num1, setNum1] = useState('');
+  const [num2, setNum2] = useState('');
+  const [result, setResult] = useState(null);
+
+  const handleClick = () => {
+    setResult(num1 + num2);
+  };
+
+  return (
+    <>
+      <h1>{result}</h1>
+      <input
+        type='number'
+        value={num1}
+        onChange={(e) => setNum1(Number(e.target.value))}
+      />
+      <input
+        type='number'
+        value={num2}
+        onChange={(e) => setNum2(Number(e.target.value))}
+      />
+      <button onClick={handleClick}>=</button>
+    </>
+  );
 }
-
-const element = (
-  <>
-    <p>Poniżej znajduje się zdjęcie super psa!</p>
-    <DogImage />
-    <p>Psy są super, dodajmy więc to samo zdjęcie jeszcze raz!</p>
-    <DogImage />
-    <p>Jako, że trójka to szczęśliwa liczba - dodajmy psa po raz trzeci!</p>
-    <DogImage />
-  </>
-);
-
-createRoot(document.getElementById('root')).render(element);
+createRoot(document.getElementById('root')).render(<Calculator />);
