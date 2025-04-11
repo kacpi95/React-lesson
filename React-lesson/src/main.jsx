@@ -276,30 +276,58 @@ import App from './App.jsx';
 
 // createRoot(document.getElementById('root')).render(element);
 
-function Calculator() {
-  const [num1, setNum1] = useState('');
-  const [num2, setNum2] = useState('');
-  const [result, setResult] = useState(null);
+// function Calculator() {
+//   const [num1, setNum1] = useState('');
+//   const [num2, setNum2] = useState('');
+//   const [result, setResult] = useState(null);
 
-  const handleClick = () => {
-    setResult(num1 + num2);
+//   const handleClick = () => {
+//     setResult(num1 + num2);
+//   };
+
+//   return (
+//     <>
+//       <h1>{result}</h1>
+//       <input
+//         type='number'
+//         value={num1}
+//         onChange={(e) => setNum1(Number(e.target.value))}
+//       />
+//       <input
+//         type='number'
+//         value={num2}
+//         onChange={(e) => setNum2(Number(e.target.value))}
+//       />
+//       <button onClick={handleClick}>=</button>
+//     </>
+//   );
+// }
+// createRoot(document.getElementById('root')).render(<Calculator />);
+
+function NameForm() {
+  const [name, setName] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
   };
 
   return (
-    <>
-      <h1>{result}</h1>
-      <input
-        type='number'
-        value={num1}
-        onChange={(e) => setNum1(Number(e.target.value))}
-      />
-      <input
-        type='number'
-        value={num2}
-        onChange={(e) => setNum2(Number(e.target.value))}
-      />
-      <button onClick={handleClick}>=</button>
-    </>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Imię:
+          <input
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <button type='submit'>Wyślij</button>
+      </form>
+      {submitted && <h2>Witaj, {name}!</h2>}
+    </div>
   );
 }
-createRoot(document.getElementById('root')).render(<Calculator />);
+createRoot(document.getElementById('root')).render(<NameForm />);
