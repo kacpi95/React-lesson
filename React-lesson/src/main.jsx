@@ -304,30 +304,42 @@ import App from './App.jsx';
 // }
 // createRoot(document.getElementById('root')).render(<Calculator />);
 
-function NameForm() {
-  const [name, setName] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+// function NameForm() {
+//   const [name, setName] = useState('');
+//   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     setSubmitted(true);
+//   };
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Imię:
-          <input
-            type='text'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <button type='submit'>Wyślij</button>
-      </form>
-      {submitted && <h2>Witaj, {name}!</h2>}
-    </div>
-  );
-}
-createRoot(document.getElementById('root')).render(<NameForm />);
+//   return (
+//     <div>
+//       <form onSubmit={handleSubmit}>
+//         <label>
+//           Imię:
+//           <input
+//             type='text'
+//             value={name}
+//             onChange={(e) => setName(e.target.value)}
+//           />
+//         </label>
+//         <button type='submit'>Wyślij</button>
+//       </form>
+//       {submitted && <h2>Witaj, {name}!</h2>}
+//     </div>
+//   );
+// }
+// createRoot(document.getElementById('root')).render(<NameForm />);
+
+import { Animal } from './components/Animal.jsx';
+
+const element = (
+  <>
+    <h1>Galeria zwierząt</h1>
+    <Animal text='Pies' img='https://zrozumiecreact.pl/dog.jpg' />
+    <Animal text='Kot' img='https://zrozumiecreact.pl/cat.jpg' />
+    <Animal text='Kaczka' img='https://zrozumiecreact.pl/duck.jpg' />
+  </>
+);
+createRoot(document.getElementById('root')).render(element);
