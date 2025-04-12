@@ -337,8 +337,12 @@ import { Animal } from './components/Animal.jsx';
 const element = (
   <>
     <h1>Galeria zwierząt</h1>
-    <Animal text='Pies' img='https://zrozumiecreact.pl/dog.jpg' />
-    <Animal text='Kot' img='https://zrozumiecreact.pl/cat.jpg' />
+    <Animal
+      text='Pies'
+      img='https://zrozumiecreact.pl/dog.jpg'
+      imgWidth={300}
+    />
+    <Animal text='Kot' img='https://zrozumiecreact.pl/cat.jpg' imgWidth={400} />
     <Animal text='Kaczka' img='https://zrozumiecreact.pl/duck.jpg' />
   </>
 );
