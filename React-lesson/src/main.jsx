@@ -332,18 +332,23 @@ import App from './App.jsx';
 // }
 // createRoot(document.getElementById('root')).render(<NameForm />);
 
-import { Animal } from './components/Animal.jsx';
+// import { Animal } from './components/Animal.jsx';
 
-const element = (
-  <>
-    <h1>Galeria zwierząt</h1>
-    <Animal
-      text='Pies'
-      img='https://zrozumiecreact.pl/dog.jpg'
-      imgWidth={300}
-    />
-    <Animal text='Kot' img='https://zrozumiecreact.pl/cat.jpg' imgWidth={400} />
-    <Animal text='Kaczka' img='https://zrozumiecreact.pl/duck.jpg' />
-  </>
-);
+// const element = (
+//   <>
+//     <h1>Galeria zwierząt</h1>
+//     <Animal
+//       text='Pies'
+//       img='https://zrozumiecreact.pl/dog.jpg'
+//       imgWidth={300}
+//     />
+//     <Animal text='Kot' img='https://zrozumiecreact.pl/cat.jpg' imgWidth={400} />
+//     <Animal text='Kaczka' img='https://zrozumiecreact.pl/duck.jpg' />
+//   </>
+// );
+// createRoot(document.getElementById('root')).render(element);
+import { Link } from './components/Links.jsx';
+
+const element = <Link text='Sprawdź stronę kursu!' shouldOpenNewTab={false} />;
+
 createRoot(document.getElementById('root')).render(element);
