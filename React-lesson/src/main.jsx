@@ -354,15 +354,45 @@ import App from './App.jsx';
 
 // c
 
-function Counter() {
-  const [count, setCount] = useState(0);
+// function Counter() {
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <div>
+//       <h2>Licznik: {count}</h2>
+//       <button onClick={() => setCount(count + 1)}>Zwiększ</button>
+//       <button onClick={() => setCount(count - 1)}>Zmniejsz</button>
+//     </div>
+//   );
+// }
+// createRoot(document.getElementById('root')).render(<Counter />);
+
+function TodoList() {
+  const [task, setTask] = useState('');
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = () => {
+    if (task.trim()) {
+      setTasks([...tasks, task]);
+      setTask('');
+    }
+  };
 
   return (
     <div>
-      <h2>Licznik: {count}</h2>
-      <button onClick={() => setCount(count + 1)}>Zwiększ</button>
-      <button onClick={() => setCount(count - 1)}>Zmniejsz</button>
+      <input
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+        placeholder='Nowe zadanie'
+      />
+      <button onClick={addTask}>Dodaj</button>
+
+      <ul>
+        {tasks.map((t, i) => (
+          <li key={i}>{t}</li>
+        ))}
+      </ul>
     </div>
   );
 }
-createRoot(document.getElementById('root')).render(<Counter />);
+createRoot(document.getElementById('root')).render(<TodoList />);
