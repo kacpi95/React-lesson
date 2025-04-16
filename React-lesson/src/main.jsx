@@ -347,8 +347,22 @@ import App from './App.jsx';
 //   </>
 // );
 // createRoot(document.getElementById('root')).render(element);
-import { Link } from './components/Links.jsx';
 
-const element = <Link text='Sprawdź stronę kursu!' shouldOpenNewTab={false} />;
+// import { Link } from './components/Links.jsx';
 
-createRoot(document.getElementById('root')).render(element);
+// const element = <Link text='Sprawdź stronę kursu!' shouldOpenNewTab={false} />;
+
+// c
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h2>Licznik: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Zwiększ</button>
+      <button onClick={() => setCount(count - 1)}>Zmniejsz</button>
+    </div>
+  );
+}
+createRoot(document.getElementById('root')).render(<Counter />);
