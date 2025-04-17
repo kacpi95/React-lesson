@@ -1,21 +1,30 @@
-import { WrapperSection } from './components/WrapperSection';
+import { Personinfo } from './components/Personinfo';
 
 function App() {
+  const jan = {
+    name: 'Jan',
+    lastName: 'Kowalski',
+    email: 'jan.k@gmail,com',
+    tel: '+48 554 245 264',
+  };
+  const kacper = {
+    name: 'Kacper',
+    lastName: 'Kowalski',
+    email: 'Kacper@gmail,com',
+    tel: '+48 111 245 264',
+  };
+  const maciek = {
+    name: 'Maciek',
+    lastName: 'Nowak',
+    email: 'maciek.n@gmail,com',
+  };
   return (
     <>
-      {' '}
-      <h1>Fakty o kapibarach:</h1>
-      <WrapperSection>
-        <span>Kapibary są największymi gryzoniami na świecie.</span>
-      </WrapperSection>
-      <a href='https://youtu.be/dQw4w9WgXcQ'>
-        Sprawdź najlepszą stronę o kapibarach!
-      </a>
-      <WrapperSection>
-        <p>
-          Kapibary są doskonałymi pływakami i świetnie radzą sobie w wodzie.
-        </p>
-      </WrapperSection>
+      <Personinfo person={jan} />
+      <br />
+      <Personinfo person={kacper} />
+      <br />
+      <Personinfo person={maciek} />
     </>
   );
 }
