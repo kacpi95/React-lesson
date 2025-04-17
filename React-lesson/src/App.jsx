@@ -1,17 +1,16 @@
-import { Personinfo } from './components/Personinfo';
+import { PlayerInfo } from './components/PlayerInfo';
 
 function App() {
-  const joe = { name: 'Joe', age: 21, isAdmin: false, country: 'AU' };
-  const jan = { name: 'Jan', age: 43, isAdmin: true, country: 'PL' };
-  const juan = { name: 'Juan', age: 15, isAdmin: true };
-  const jonas = { name: 'Jonas', age: 18, isAdmin: false, country: 'GER' };
+  const rl9 = { name: 'Robert Lewandowski', goalInPolishLeague: 32 };
+  const cr7 = { name: 'Cristiano Ronaldo', goalInPolishLeague: 0 };
+  const lm10 = { name: 'Leo Messi', goalInPolishLeague: 0 };
 
   return (
     <>
-      <Personinfo person={joe} />
-      <Personinfo person={jan} />
-      <Personinfo person={juan} />
-      <Personinfo person={jonas} />
+      <h1>Najlepsi piłkarze:</h1>
+      <PlayerInfo person={rl9} />
+      <PlayerInfo person={cr7} />
+      <PlayerInfo person={lm10} />
     </>
   );
 }
