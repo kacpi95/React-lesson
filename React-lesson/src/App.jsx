@@ -1,30 +1,17 @@
 import { Personinfo } from './components/Personinfo';
 
 function App() {
-  const jan = {
-    name: 'Jan',
-    lastName: 'Kowalski',
-    email: 'jan.k@gmail,com',
-    tel: '+48 554 245 264',
-  };
-  const kacper = {
-    name: 'Kacper',
-    lastName: 'Kowalski',
-    email: 'Kacper@gmail,com',
-    tel: '+48 111 245 264',
-  };
-  const maciek = {
-    name: 'Maciek',
-    lastName: 'Nowak',
-    email: 'maciek.n@gmail,com',
-  };
+  const joe = { name: 'Joe', age: 21, isAdmin: false, country: 'AU' };
+  const jan = { name: 'Jan', age: 43, isAdmin: true, country: 'PL' };
+  const juan = { name: 'Juan', age: 15, isAdmin: true };
+  const jonas = { name: 'Jonas', age: 18, isAdmin: false, country: 'GER' };
+
   return (
     <>
+      <Personinfo person={joe} />
       <Personinfo person={jan} />
-      <br />
-      <Personinfo person={kacper} />
-      <br />
-      <Personinfo person={maciek} />
+      <Personinfo person={juan} />
+      <Personinfo person={jonas} />
     </>
   );
 }
