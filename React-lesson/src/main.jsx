@@ -1,4 +1,3 @@
-import { StrictMode, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
 
@@ -367,32 +366,34 @@ import App from './App.jsx';
 // }
 // createRoot(document.getElementById('root')).render(<Counter />);
 
-function TodoList() {
-  const [task, setTask] = useState('');
-  const [tasks, setTasks] = useState([]);
+// function TodoList() {
+//   const [task, setTask] = useState('');
+//   const [tasks, setTasks] = useState([]);
 
-  const addTask = () => {
-    if (task.trim()) {
-      setTasks([...tasks, task]);
-      setTask('');
-    }
-  };
+//   const addTask = () => {
+//     if (task.trim()) {
+//       setTasks([...tasks, task]);
+//       setTask('');
+//     }
+//   };
 
-  return (
-    <div>
-      <input
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        placeholder='Nowe zadanie'
-      />
-      <button onClick={addTask}>Dodaj</button>
+//   return (
+//     <div>
+//       <input
+//         value={task}
+//         onChange={(e) => setTask(e.target.value)}
+//         placeholder='Nowe zadanie'
+//       />
+//       <button onClick={addTask}>Dodaj</button>
 
-      <ul>
-        {tasks.map((t, i) => (
-          <li key={i}>{t}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-createRoot(document.getElementById('root')).render(<TodoList />);
+//       <ul>
+//         {tasks.map((t, i) => (
+//           <li key={i}>{t}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+// createRoot(document.getElementById('root')).render(<TodoList />);
+
+createRoot(document.getElementById('root')).render(<App />);
