@@ -3,6 +3,7 @@ export function Personinfo({ person }) {
     <>
       <h2>{person.name}</h2>
       <h3>{person.isAdmin == true ? 'Administrator' : 'Użytkownik'}</h3>
+      <span>{person.age >= 18 ? 'Pełnoletni' : ''}</span>
       <hr />
     </>
   );
