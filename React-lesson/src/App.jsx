@@ -1,16 +1,31 @@
-import { PlayerInfo } from './components/PlayerInfo';
+import { PersonInfo } from './components/Personinfo';
 
 function App() {
-  const rl9 = { name: 'Robert Lewandowski', goalInPolishLeague: 32 };
-  const cr7 = { name: 'Cristiano Ronaldo', goalInPolishLeague: 0 };
-  const lm10 = { name: 'Leo Messi', goalInPolishLeague: 0 };
-
+  const jan = {
+    name: 'Jan',
+    lastName: 'Kowalski',
+    mail: 'j.kow@gmail.com',
+    tel: '+48 888 000 111',
+  };
+  const janina = {
+    name: 'Janina',
+    lastName: 'Kowalska',
+    mail: 'janina.kow@gmail.com',
+    tel: '+48 888 000 222',
+  };
+  const karol = {
+    name: 'Karol',
+    lastName: 'Kowalski',
+    mail: 'k.kow@gmail.com',
+  };
   return (
     <>
-      <h1>Najlepsi piłkarze:</h1>
-      <PlayerInfo person={rl9} />
-      <PlayerInfo person={cr7} />
-      <PlayerInfo person={lm10} />
+      <PersonInfo person={jan} />
+      <br />
+      <PersonInfo person={janina} />
+      <br />
+      <PersonInfo person={karol} />
+      <img src='/dog.jpg' alt='dog' />
     </>
   );
 }

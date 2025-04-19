@@ -1,4 +1,4 @@
-export function Personinfo({ person }) {
+export function PersonInfo({ person }) {
   return (
     <>
       <h2>{person.name}</h2>
