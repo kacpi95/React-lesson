@@ -1,31 +1,21 @@
-import { PersonInfo } from './components/Personinfo';
-
 function App() {
-  const jan = {
-    name: 'Jan',
-    lastName: 'Kowalski',
-    mail: 'j.kow@gmail.com',
-    tel: '+48 888 000 111',
-  };
-  const janina = {
-    name: 'Janina',
-    lastName: 'Kowalska',
-    mail: 'janina.kow@gmail.com',
-    tel: '+48 888 000 222',
-  };
-  const karol = {
-    name: 'Karol',
-    lastName: 'Kowalski',
-    mail: 'k.kow@gmail.com',
-  };
+  function handleClick(score) {
+    if (score == 5) {
+      alert('Bardzo dziękujemy :)');
+    } else if (score > 2) {
+      alert('Dziękujemy');
+    } else {
+      alert('Przykro nam');
+    }
+  }
   return (
     <>
-      <PersonInfo person={jan} />
-      <br />
-      <PersonInfo person={janina} />
-      <br />
-      <PersonInfo person={karol} />
-      <img src='/dog.jpg' alt='dog' />
+      <h1>Oceń usługę:</h1>
+      <button onClick={() => handleClick(1)}>1</button>
+      <button onClick={() => handleClick(2)}>2</button>
+      <button onClick={() => handleClick(3)}>3</button>
+      <button onClick={() => handleClick(4)}>4</button>
+      <button onClick={() => handleClick(5)}>5</button>
     </>
   );
 }
