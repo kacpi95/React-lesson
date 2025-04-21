@@ -1,21 +1,34 @@
 function App() {
-  function handleClick(score) {
-    if (score == 5) {
-      alert('Bardzo dziękujemy :)');
-    } else if (score > 2) {
-      alert('Dziękujemy');
-    } else {
-      alert('Przykro nam');
-    }
-  }
   return (
     <>
-      <h1>Oceń usługę:</h1>
-      <button onClick={() => handleClick(1)}>1</button>
-      <button onClick={() => handleClick(2)}>2</button>
-      <button onClick={() => handleClick(3)}>3</button>
-      <button onClick={() => handleClick(4)}>4</button>
-      <button onClick={() => handleClick(5)}>5</button>
+      <h1>List eventów</h1>
+
+      <h2>click</h2>
+      <button onClick={() => alert('onClick')}>Click</button>
+      <hr />
+
+      <h2>keydown</h2>
+      {/* Dodaj obsługę wciśnięcia klawisza klawiatury i wyświetl alert */}
+      <input type='number' onKeyDown={() => alert('onKeyDown')} />
+      <hr />
+
+      <h2>double click</h2>
+      {/* Dodaj obsługę podwójnego kliknięcia i wyświetl alert */}
+      <button onDoubleClick={() => alert('doubleClick')}>Double click</button>
+      <hr />
+
+      <h2>change</h2>
+      {/* Dodaj obsługę zmiany wartości selecta i wyświetl alert */}
+      <select onChange={() => alert('change')}>
+        <option value='A'>OptionA</option>
+        <option value='B'>OptionB</option>
+      </select>
+      <hr />
+
+      <h2>blur</h2>
+      {/* Dodaj obsługę blura i wyświetl alert */}
+      <input onBlur={() => alert('blur')} />
+      <hr />
     </>
   );
 }
