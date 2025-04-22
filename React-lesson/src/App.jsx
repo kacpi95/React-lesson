@@ -1,36 +1,52 @@
-function App() {
+// import { useState } from 'react';
+
+// function App() {
+//   const [isSpoilerShown, setIsSpoilerShown] = useState(false);
+//   const [isWarningShown, setIsWarningShwon] = useState(true);
+
+//   function handleShowSpoilerCLick() {
+//     setIsSpoilerShown(true);
+//     setIsWarningShwon(false);
+//   }
+//   function handleCloseWarningClick() {
+//     setIsWarningShwon(false);
+//   }
+//   return (
+//     <>
+//       <h1>Gwiezdne Wojny V</h1>
+//       <h2>Rok produkcji: 1998</h2>
+//       <h2>Fabuła</h2>
+//       {isWarningShown && (
+//         <p>
+//           Uwaga! Opis fabuły zawiera spoilery!
+//           <button onClick={handleCloseWarningClick}>X</button>
+//         </p>
+//       )}
+//       <p>Dobrzy walczą ze złymi. Trzeba wyłączyć pole siłowe.</p>
+//       {isSpoilerShown ? (
+//         <p>Valder okazuje sie być ojcem Luka.</p>
+//       ) : (
+//         <button onClick={handleShowSpoilerCLick}>Pokaż spoiler</button>
+//       )}
+//     </>
+//   );
+// }
+
+// export default App;
+import { useState } from 'react';
+
+export default function App() {
+  const [isShowNumber, setIsShowNumber] = useState(false);
+
+  function handleClick() {
+    setIsShowNumber(true);
+  }
+
   return (
     <>
-      <h1>List eventów</h1>
-
-      <h2>click</h2>
-      <button onClick={() => alert('onClick')}>Click</button>
-      <hr />
-
-      <h2>keydown</h2>
-      {/* Dodaj obsługę wciśnięcia klawisza klawiatury i wyświetl alert */}
-      <input type='number' onKeyDown={() => alert('onKeyDown')} />
-      <hr />
-
-      <h2>double click</h2>
-      {/* Dodaj obsługę podwójnego kliknięcia i wyświetl alert */}
-      <button onDoubleClick={() => alert('doubleClick')}>Double click</button>
-      <hr />
-
-      <h2>change</h2>
-      {/* Dodaj obsługę zmiany wartości selecta i wyświetl alert */}
-      <select onChange={() => alert('change')}>
-        <option value='A'>OptionA</option>
-        <option value='B'>OptionB</option>
-      </select>
-      <hr />
-
-      <h2>blur</h2>
-      {/* Dodaj obsługę blura i wyświetl alert */}
-      <input onBlur={() => alert('blur')} />
-      <hr />
+      <h1>Jan Kowalski</h1>
+      <button onClick={handleClick}>Pokaż numer telefonu</button>
+      {isShowNumber && <h2>Numer telefonu: 888 999 000</h2>}
     </>
   );
 }
-
-export default App;
