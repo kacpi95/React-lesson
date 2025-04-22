@@ -36,17 +36,26 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [isShowNumber, setIsShowNumber] = useState(false);
-
-  function handleClick() {
-    setIsShowNumber(true);
+  const [isShow, setIsShow] = useState('');
+  function handleClick(score) {
+    if (score === 5) {
+      setIsShow('Bardzo dziękujemy! :)');
+    } else if (score > 2) {
+      setIsShow('Dziękujemy!');
+    } else {
+      setIsShow('Przykro nam :(');
+    }
   }
 
   return (
     <>
-      <h1>Jan Kowalski</h1>
-      <button onClick={handleClick}>Pokaż numer telefonu</button>
-      {isShowNumber && <h2>Numer telefonu: 888 999 000</h2>}
+      <h1>Oceń usługę:</h1>
+      <button onClick={() => handleClick(1)}>1</button>
+      <button onClick={() => handleClick(2)}>2</button>
+      <button onClick={() => handleClick(3)}>3</button>
+      <button onClick={() => handleClick(4)}>4</button>
+      <button onClick={() => handleClick(5)}>5</button>
+      <h2>{isShow}</h2>
     </>
   );
 }
