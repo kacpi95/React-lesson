@@ -36,26 +36,19 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [isShow, setIsShow] = useState('');
-  function handleClick(score) {
-    if (score === 5) {
-      setIsShow('Bardzo dziękujemy! :)');
-    } else if (score > 2) {
-      setIsShow('Dziękujemy!');
-    } else {
-      setIsShow('Przykro nam :(');
-    }
-  }
+  const [isState, setIsState] = useState('');
 
   return (
     <>
-      <h1>Oceń usługę:</h1>
-      <button onClick={() => handleClick(1)}>1</button>
-      <button onClick={() => handleClick(2)}>2</button>
-      <button onClick={() => handleClick(3)}>3</button>
-      <button onClick={() => handleClick(4)}>4</button>
-      <button onClick={() => handleClick(5)}>5</button>
-      <h2>{isShow}</h2>
+      <select onChange={(e) => setIsState(e.target.value)}>
+        <option disabled selected value>
+          Wybierz opcję
+        </option>
+        <option value='A'>Opcja A</option>
+        <option value='B'>Opcja B</option>
+        <option value='C'>Opcja C</option>
+      </select>
+      <h1>{isState}</h1>
     </>
   );
 }
