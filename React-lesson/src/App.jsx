@@ -36,19 +36,32 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [isState, setIsState] = useState('');
+  const [isShowSection, setIsShowSection] = useState(1);
 
   return (
     <>
-      <select onChange={(e) => setIsState(e.target.value)}>
-        <option disabled selected value>
-          Wybierz opcję
-        </option>
-        <option value='A'>Opcja A</option>
-        <option value='B'>Opcja B</option>
-        <option value='C'>Opcja C</option>
-      </select>
-      <h1>{isState}</h1>
+      <h1>Ciekawostki o borsukach</h1>
+      <button onClick={() => setIsShowSection(1)}>1</button>
+      <button onClick={() => setIsShowSection(2)}>2</button>
+      <button onClick={() => setIsShowSection(3)}>3</button>
+      {isShowSection === 1 && (
+        <section>
+          <h2>Ciekawostka 1</h2>
+          <p>Borsuki to ssaki z rodziny łasicowatych.</p>
+        </section>
+      )}
+      {isShowSection === 2 && (
+        <section>
+          <h2>Ciekawostka 2</h2>
+          <p>Ich dieta obejmuje owady i rośliny.</p>
+        </section>
+      )}
+      {isShowSection === 3 && (
+        <section>
+          <h2>Ciekawostka 3</h2>
+          <p>Borsuki są aktywne nocą.</p>
+        </section>
+      )}
     </>
   );
 }
