@@ -36,32 +36,12 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [isShowSection, setIsShowSection] = useState(1);
-
+  const [isCount, setIsCount] = useState(0);
   return (
     <>
-      <h1>Ciekawostki o borsukach</h1>
-      <button onClick={() => setIsShowSection(1)}>1</button>
-      <button onClick={() => setIsShowSection(2)}>2</button>
-      <button onClick={() => setIsShowSection(3)}>3</button>
-      {isShowSection === 1 && (
-        <section>
-          <h2>Ciekawostka 1</h2>
-          <p>Borsuki to ssaki z rodziny łasicowatych.</p>
-        </section>
-      )}
-      {isShowSection === 2 && (
-        <section>
-          <h2>Ciekawostka 2</h2>
-          <p>Ich dieta obejmuje owady i rośliny.</p>
-        </section>
-      )}
-      {isShowSection === 3 && (
-        <section>
-          <h2>Ciekawostka 3</h2>
-          <p>Borsuki są aktywne nocą.</p>
-        </section>
-      )}
+      <h1>{isCount}</h1>
+      <button onClick={() => setIsCount(isCount + 1)}>+</button>
+      <button onClick={() => setIsCount(isCount - 1)}>-</button>
     </>
   );
 }
