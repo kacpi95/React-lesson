@@ -36,28 +36,16 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [name, setName] = useState('');
-  const [submittedName, setSubmittedName] = useState('');
+  const [bgColor, setBgColor] = useState('white');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setSubmittedName(name);
+  const changeColor = () => {
+    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    setBgColor(randomColor);
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Wprowadź swoje nazwisko:
-          <input
-            type='text'
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <button type='submit'>Zatwierdź</button>
-      </form>
-      {submittedName && <h2>Witaj, {submittedName}!</h2>}
+    <div style={{ backgroundColor: bgColor, height: '100vh' }}>
+      <button onClick={changeColor}>Zmień kolor tła</button>
     </div>
   );
 }
