@@ -36,12 +36,28 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [isCount, setIsCount] = useState(0);
+  const [name, setName] = useState('');
+  const [submittedName, setSubmittedName] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmittedName(name);
+  };
+
   return (
-    <>
-      <h1>{isCount}</h1>
-      <button onClick={() => setIsCount(isCount + 1)}>+</button>
-      <button onClick={() => setIsCount(isCount - 1)}>-</button>
-    </>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Wprowadź swoje nazwisko:
+          <input
+            type='text'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <button type='submit'>Zatwierdź</button>
+      </form>
+      {submittedName && <h2>Witaj, {submittedName}!</h2>}
+    </div>
   );
 }
