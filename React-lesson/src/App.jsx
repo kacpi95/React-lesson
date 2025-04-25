@@ -36,16 +36,16 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [bgColor, setBgColor] = useState('white');
+  const [isOn, setIsOn] = useState(false);
 
-  const changeColor = () => {
-    const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-    setBgColor(randomColor);
+  const toggleSwitch = () => {
+    setIsOn(!isOn);
   };
 
   return (
-    <div style={{ backgroundColor: bgColor, height: '100vh' }}>
-      <button onClick={changeColor}>Zmień kolor tła</button>
+    <div>
+      <p>Przełącznik jest {isOn ? 'Włączony' : 'Wyłączony'}</p>
+      <button onClick={toggleSwitch}>Zmień stan</button>
     </div>
   );
 }
