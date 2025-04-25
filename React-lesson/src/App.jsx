@@ -36,16 +36,16 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [isOn, setIsOn] = useState(false);
+  const [clicks, setClicks] = useState(0);
 
-  const toggleSwitch = () => {
-    setIsOn(!isOn);
+  const handleClick = () => {
+    setClicks(clicks + 1);
   };
 
   return (
     <div>
-      <p>Przełącznik jest {isOn ? 'Włączony' : 'Wyłączony'}</p>
-      <button onClick={toggleSwitch}>Zmień stan</button>
+      <p>Liczba kliknięć: {clicks}</p>
+      <button onClick={handleClick}>Kliknij mnie</button>
     </div>
   );
 }
