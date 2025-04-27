@@ -36,16 +36,16 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [clicks, setClicks] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const handleClick = () => {
-    setClicks(clicks + 1);
+  const toggleText = () => {
+    setIsVisible(!isVisible);
   };
 
   return (
     <div>
-      <p>Liczba kliknięć: {clicks}</p>
-      <button onClick={handleClick}>Kliknij mnie</button>
+      <button onClick={toggleText}>{isVisible ? 'Ukryj' : 'Pokaż'}</button>
+      {isVisible && <p>Hello!</p>}
     </div>
   );
 }
