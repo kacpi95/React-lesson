@@ -36,16 +36,24 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
-  const toggleText = () => {
-    setIsVisible(!isVisible);
+  const toggleTheme = () => {
+    setIsDark(!isDark);
   };
 
   return (
-    <div>
-      <button onClick={toggleText}>{isVisible ? 'Ukryj' : 'Pokaż'}</button>
-      {isVisible && <p>Hello!</p>}
+    <div
+      style={{
+        backgroundColor: isDark ? '#333' : '#fff',
+        color: isDark ? '#fff' : '#000',
+        minHeight: '100vh',
+        padding: '20px',
+      }}
+    >
+      <button onClick={toggleTheme}>
+        Zmień motyw na {isDark ? 'jasny' : 'ciemny'}
+      </button>
     </div>
   );
 }
