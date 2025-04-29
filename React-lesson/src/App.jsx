@@ -42,16 +42,35 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [score, setScore] = useState(0);
+  const [activeImg, setActiveImg] = useState(0);
 
+  function handlePreviousClick() {
+    setActiveImg((prevActiveImg) => {
+      return prevActiveImg === 0 ? 2 : prevActiveImg - 1;
+    });
+  }
+
+  function handleNextClick() {
+    setActiveImg((prevActiveImg) => {
+      return prevActiveImg === 2 ? 0 : prevActiveImg + 1;
+    });
+  }
   return (
     <>
-      <h1>Licznik</h1>
-      <button onClick={() => setScore(score - 3)}>Odejmij 3</button>
-      <button onClick={() => setScore(score - 1)}>Odejmij 1</button>
-      <button onClick={() => setScore(score + 1)}>Dodaj 1</button>
-      <button onClick={() => setScore(score + 3)}>Dodaj 3</button>
-      <h2>Aktualny stan: {score}</h2>
+      <h1>Slider</h1>
+      <button onClick={handlePreviousClick}>Poprzednie</button>
+      <button onClick={handleNextClick}>Następne</button>
+      <div>
+        {activeImg === 0 && (
+          <img src='https://zrozumiecreact.pl/dog.jpg' width='200' />
+        )}
+        {activeImg === 1 && (
+          <img src='https://zrozumiecreact.pl/cat.jpg' width='200' />
+        )}
+        {activeImg === 2 && (
+          <img src='https://zrozumiecreact.pl/duck.jpg' width='200' />
+        )}
+      </div>
     </>
   );
 }
