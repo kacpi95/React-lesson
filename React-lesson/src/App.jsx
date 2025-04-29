@@ -42,35 +42,29 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [activeImg, setActiveImg] = useState(0);
+  const [person, setPerson] = useState({
+    name: 'Jan',
+    lastName: 'Kowalski',
+    isAdmin: false,
+  });
 
-  function handlePreviousClick() {
-    setActiveImg((prevActiveImg) => {
-      return prevActiveImg === 0 ? 2 : prevActiveImg - 1;
-    });
+  function handleClick() {
+    setPerson((prevPerson) => ({
+      ...prevPerson,
+      isAdmin: true,
+    }));
   }
 
-  function handleNextClick() {
-    setActiveImg((prevActiveImg) => {
-      return prevActiveImg === 2 ? 0 : prevActiveImg + 1;
-    });
-  }
   return (
     <>
-      <h1>Slider</h1>
-      <button onClick={handlePreviousClick}>Poprzednie</button>
-      <button onClick={handleNextClick}>Następne</button>
-      <div>
-        {activeImg === 0 && (
-          <img src='https://zrozumiecreact.pl/dog.jpg' width='200' />
-        )}
-        {activeImg === 1 && (
-          <img src='https://zrozumiecreact.pl/cat.jpg' width='200' />
-        )}
-        {activeImg === 2 && (
-          <img src='https://zrozumiecreact.pl/duck.jpg' width='200' />
-        )}
-      </div>
+      <h1>Użytkownicy:</h1>
+      <h2>
+        {person.name} {person.lastName}
+      </h2>
+      <h3>{person.isAdmin ? 'Administrator' : 'Użytkownik'}</h3>
+      {!person.isAdmin && (
+        <button onClick={handleClick}>Daj uprawnienia admina</button>
+      )}
     </>
   );
 }
