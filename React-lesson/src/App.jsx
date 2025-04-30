@@ -18,12 +18,13 @@ import { useState } from 'react';
 
 export default function App() {
   const [name, setName] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [role, setRole] = useState('Użytkownik');
 
   const [person, setPerson] = useState(null);
+
   function handleSubmit(e) {
     e.preventDefault();
-    setPerson({ name, isAdmin });
+    setPerson({ name, role });
     setName('');
   }
 
@@ -33,7 +34,7 @@ export default function App() {
       {person && (
         <>
           <h2>{person.name}</h2>
-          <h3>{person.isAdmin ? 'Administrator' : 'Użytkownik'}</h3>
+          <h3>{person.role}</h3>
         </>
       )}
       <form onSubmit={handleSubmit}>
@@ -45,15 +46,37 @@ export default function App() {
           />
         </div>
         <div>
-          <label htmlFor='admin'>
-            Admin:
-            <input
-              id='admin'
-              type='checkbox'
-              checked={isAdmin}
-              onChange={(e) => setIsAdmin(e.target.checked)}
-            />
-          </label>
+          <input
+            id='user'
+            name='role'
+            value='Użytkownik'
+            type='radio'
+            checked={role === 'Użytkownik'}
+            onChange={(e) => setRole(e.target.value)}
+          />
+          <label htmlFor='user'>Użytkownik</label>
+        </div>
+        <div>
+          <input
+            id='moderator'
+            name='role'
+            value='Moderator'
+            type='radio'
+            checked={role === 'Moderator'}
+            onChange={(e) => setRole(e.target.value)}
+          />
+          <label htmlFor='moderator'>Moderator</label>
+        </div>
+        <div>
+          <input
+            id='admin'
+            name='role'
+            value='Administrator'
+            type='radio'
+            checked={role === 'Administrator'}
+            onChange={(e) => setRole(e.target.value)}
+          />
+          <label htmlFor='admin'>Administrator</label>
         </div>
         <button disabled={name.length === 0}>Zapisz</button>
       </form>
