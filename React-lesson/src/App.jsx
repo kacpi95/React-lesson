@@ -18,15 +18,13 @@ import { useState } from 'react';
 
 export default function App() {
   const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const [person, setPerson] = useState(null);
-
   function handleSubmit(e) {
     e.preventDefault();
-    setPerson({ name, lastName });
+    setPerson({ name, isAdmin });
     setName('');
-    setLastName('');
   }
 
   return (
@@ -34,9 +32,8 @@ export default function App() {
       <h1>Dane osobowe:</h1>
       {person && (
         <>
-          <h2>
-            {person.name} {person.lastName}
-          </h2>
+          <h2>{person.name}</h2>
+          <h3>{person.isAdmin ? 'Administrator' : 'Użytkownik'}</h3>
         </>
       )}
       <form onSubmit={handleSubmit}>
@@ -48,13 +45,17 @@ export default function App() {
           />
         </div>
         <div>
-          <input
-            onChange={(e) => setLastName(e.target.value)}
-            value={lastName}
-            placeholder='Nazwisko'
-          />
+          <label htmlFor='admin'>
+            Admin:
+            <input
+              id='admin'
+              type='checkbox'
+              checked={isAdmin}
+              onChange={(e) => setIsAdmin(e.target.checked)}
+            />
+          </label>
         </div>
-        <button>Zapisz</button>
+        <button disabled={name.length === 0}>Zapisz</button>
       </form>
     </>
   );
