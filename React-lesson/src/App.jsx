@@ -17,69 +17,43 @@
 import { useState } from 'react';
 
 export default function App() {
-  const [name, setName] = useState('');
-  const [role, setRole] = useState('Użytkownik');
-
-  const [person, setPerson] = useState(null);
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    setPerson({ name, role });
-    setName('');
+    let error = null;
+
+    if (password.trim().length < 5) {
+      error = 'Hasło powinno mieć co najmniej 5 znaków.';
+    } else if (!/^(?=.*[0-9]).*$/.test(password)) {
+      error = 'Hasło powinno zawierać cyfrę.';
+    }
+
+    if (error !== null) {
+      setErrorMessage(error);
+    } else {
+      setErrorMessage(null);
+      setPassword('');
+      alert('Hasło zapisane!');
+    }
   }
 
   return (
     <>
-      <h1>Dane osobowe:</h1>
-      {person && (
-        <>
-          <h2>{person.name}</h2>
-          <h3>{person.role}</h3>
-        </>
-      )}
+      <h1>Walidator hasła:</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <input
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-            placeholder='Imię'
+            type='password'
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+            placeholder='Wpisz hasło...'
           />
         </div>
-        <div>
-          <input
-            id='user'
-            name='role'
-            value='Użytkownik'
-            type='radio'
-            checked={role === 'Użytkownik'}
-            onChange={(e) => setRole(e.target.value)}
-          />
-          <label htmlFor='user'>Użytkownik</label>
-        </div>
-        <div>
-          <input
-            id='moderator'
-            name='role'
-            value='Moderator'
-            type='radio'
-            checked={role === 'Moderator'}
-            onChange={(e) => setRole(e.target.value)}
-          />
-          <label htmlFor='moderator'>Moderator</label>
-        </div>
-        <div>
-          <input
-            id='admin'
-            name='role'
-            value='Administrator'
-            type='radio'
-            checked={role === 'Administrator'}
-            onChange={(e) => setRole(e.target.value)}
-          />
-          <label htmlFor='admin'>Administrator</label>
-        </div>
-        <button disabled={name.length === 0}>Zapisz</button>
+        <button>Wyślij</button>
       </form>
+      <h2>{errorMessage}</h2>
     </>
   );
 }
