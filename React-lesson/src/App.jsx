@@ -18,23 +18,20 @@
 import { useState } from "react";
 
 function App() {
-	const [name, setName] = useState("");
-
+	const [count, setCount] = useState(0);
 	return (
 		<>
-			<h1>Wpisz swoje imię:</h1>
-			<div>
-				<div>
-					<label htmlFor='name'></label>
-				</div>
-				<input
-					type='text'
-					id='name'
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-				/>
-			</div>
-			<h2>{name}</h2>
+			<h1>Liczba kliknięć:</h1>
+			<h2>{count}</h2>
+			<button onClick={() => setCount(count + 1)}>+</button>
+			<button
+				onClick={() => {
+					setCount(count - 1);
+				}}
+			>
+				-
+			</button>
+			<button onClick={() => setCount(0)}>reset</button>
 		</>
 	);
 }
