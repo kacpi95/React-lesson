@@ -18,20 +18,15 @@
 import { useState } from "react";
 
 function App() {
-	const [isVisible, setIsVisible] = useState(true);
+	const [isOn, isOff] = useState(false);
 
 	function handleClick() {
-		setIsVisible(!isVisible);
+		isOff(!isOn);
 	}
 	return (
 		<>
-			{isVisible && (
-				<h1>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta,
-					consequatur.
-				</h1>
-			)}
-			<button onClick={handleClick}>{isVisible ? "Ukryj" : "Pokaż"}</button>
+			<p>Swiatło: {isOn ? "Włączone" : "Wyłączone"}</p>
+			<button onClick={handleClick}>Przełącz</button>
 		</>
 	);
 }
