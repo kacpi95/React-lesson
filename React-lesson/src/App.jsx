@@ -19,19 +19,19 @@ import { useState } from "react";
 
 function App() {
 	const [count, setCount] = useState(0);
+
+	function handleClick() {
+		if (count < 3) {
+			setCount(count + 1);
+		}
+	}
 	return (
 		<>
-			<h1>Liczba kliknięć:</h1>
-			<h2>{count}</h2>
-			<button onClick={() => setCount(count + 1)}>+</button>
-			<button
-				onClick={() => {
-					setCount(count - 1);
-				}}
-			>
-				-
+			<h1>Liczba Kliknięć:</h1>
+			<p>{count}</p>
+			<button onClick={handleClick} disabled={count >= 3}>
+				+
 			</button>
-			<button onClick={() => setCount(0)}>reset</button>
 		</>
 	);
 }
