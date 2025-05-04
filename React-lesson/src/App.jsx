@@ -18,15 +18,23 @@
 import { useState } from "react";
 
 function App() {
-	const [isOn, isOff] = useState(false);
+	const [name, setName] = useState("");
 
-	function handleClick() {
-		isOff(!isOn);
-	}
 	return (
 		<>
-			<p>Swiatło: {isOn ? "Włączone" : "Wyłączone"}</p>
-			<button onClick={handleClick}>Przełącz</button>
+			<h1>Wpisz swoje imię:</h1>
+			<div>
+				<div>
+					<label htmlFor='name'></label>
+				</div>
+				<input
+					type='text'
+					id='name'
+					value={name}
+					onChange={(e) => setName(e.target.value)}
+				/>
+			</div>
+			<h2>{name}</h2>
 		</>
 	);
 }
