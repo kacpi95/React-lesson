@@ -18,21 +18,18 @@
 import { useState } from "react";
 
 function App() {
-	const [count, setCount] = useState(0);
+	const [leftCount, setLeftCount] = useState(0);
+	const [rightCount, setRightCount] = useState(0);
 
-	function handleClick() {
-		if (count < 3) {
-			setCount(count + 1);
-		}
-	}
 	return (
-		<>
-			<h1>Liczba Kliknięć:</h1>
-			<p>{count}</p>
-			<button onClick={handleClick} disabled={count >= 3}>
-				+
+		<div>
+			<button onClick={() => setLeftCount(leftCount + 1)}>
+				Lewy ({leftCount})
 			</button>
-		</>
+			<button onClick={() => setRightCount(rightCount + 1)}>
+				Prawy ({rightCount})
+			</button>
+		</div>
 	);
 }
 
