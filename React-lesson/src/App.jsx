@@ -18,18 +18,16 @@
 import { useState } from "react";
 
 function App() {
-	const [leftCount, setLeftCount] = useState(0);
-	const [rightCount, setRightCount] = useState(0);
-
+	const [lang, setLang] = useState("pl");
+	function handleClick() {
+		setLang(lang === "pl" ? "eng" : "pl");
+	}
 	return (
-		<div>
-			<button onClick={() => setLeftCount(leftCount + 1)}>
-				Lewy ({leftCount})
-			</button>
-			<button onClick={() => setRightCount(rightCount + 1)}>
-				Prawy ({rightCount})
-			</button>
-		</div>
+		<>
+			<h1>Wybierz język:</h1>
+			<h3>{lang}</h3>
+			<button onClick={handleClick}>Pl/ENG</button>
+		</>
 	);
 }
 
