@@ -18,15 +18,18 @@
 import { useState } from "react";
 
 function App() {
-	const [lang, setLang] = useState("pl");
-	function handleClick() {
-		setLang(lang === "pl" ? "eng" : "pl");
-	}
+	const [accept, setAccept] = useState(false);
 	return (
 		<>
-			<h1>Wybierz język:</h1>
-			<h3>{lang}</h3>
-			<button onClick={handleClick}>Pl/ENG</button>
+			<label htmlFor=''>Akceptuję regulamin</label>
+			<input
+				type='checkbox'
+				checked={accept}
+				onChange={() => setAccept(!accept)}
+			/>
+			<h1>
+				{accept ? "Regulamin zaakceptowany" : "Regulamin niezaakceptowany"}
+			</h1>
 		</>
 	);
 }
