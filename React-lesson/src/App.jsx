@@ -18,18 +18,22 @@
 import { useState } from "react";
 
 function App() {
-	const [accept, setAccept] = useState(false);
+	const array = [
+		"Nigdy nie przestawaj się uczyć.",
+		"Praktyka czyni mistrza.",
+		"Koduj codziennie!",
+		"Zacznij od prostych rzeczy.",
+	];
+	const [list, setList] = useState("");
+
+	function handleClick() {
+		const randomList = Math.floor(Math.random() * array.length);
+		setList(array[randomList]);
+	}
 	return (
 		<>
-			<label htmlFor=''>Akceptuję regulamin</label>
-			<input
-				type='checkbox'
-				checked={accept}
-				onChange={() => setAccept(!accept)}
-			/>
-			<h1>
-				{accept ? "Regulamin zaakceptowany" : "Regulamin niezaakceptowany"}
-			</h1>
+			<button onClick={handleClick}>Pokaż przykładowy przykład</button>
+			<h1>{list}</h1>
 		</>
 	);
 }
