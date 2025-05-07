@@ -18,23 +18,30 @@
 import { useState } from "react";
 
 function App() {
-	const array = [
-		"Nigdy nie przestawaj się uczyć.",
-		"Praktyka czyni mistrza.",
-		"Koduj codziennie!",
-		"Zacznij od prostych rzeczy.",
-	];
-	const [list, setList] = useState("");
+	const [comment, setComment] = useState("");
+	const [comments, setComments] = useState([]);
 
-	function handleClick() {
-		const randomList = Math.floor(Math.random() * array.length);
-		setList(array[randomList]);
-	}
+	const handleAdd = () => {
+		if (comment.trim()) {
+			setComments([...comments, comment]);
+			setComment("");
+		}
+	};
+
 	return (
-		<>
-			<button onClick={handleClick}>Pokaż przykładowy przykład</button>
-			<h1>{list}</h1>
-		</>
+		<div>
+			<textarea
+				placeholder='Napisz komentarz...'
+				value={comment}
+				onChange={(e) => setComment(e.target.value)}
+			/>
+			<button onClick={handleAdd}>Dodaj komentarz</button>
+			<ul>
+				{comments.map((c, i) => (
+					<li key={i}>{c}</li>
+				))}
+			</ul>
+		</div>
 	);
 }
 
