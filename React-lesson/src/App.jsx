@@ -18,29 +18,18 @@
 import { useState } from "react";
 
 function App() {
-	const [comment, setComment] = useState("");
-	const [comments, setComments] = useState([]);
-
-	const handleAdd = () => {
-		if (comment.trim()) {
-			setComments([...comments, comment]);
-			setComment("");
-		}
-	};
+	const [votes, setVotes] = useState({ like: 0, dislike: 0 });
 
 	return (
 		<div>
-			<textarea
-				placeholder='Napisz komentarz...'
-				value={comment}
-				onChange={(e) => setComment(e.target.value)}
-			/>
-			<button onClick={handleAdd}>Dodaj komentarz</button>
-			<ul>
-				{comments.map((c, i) => (
-					<li key={i}>{c}</li>
-				))}
-			</ul>
+			<button onClick={() => setVotes({ ...votes, like: votes.like + 1 })}>
+				👍 {votes.like}
+			</button>
+			<button
+				onClick={() => setVotes({ ...votes, dislike: votes.dislike + 1 })}
+			>
+				👎 {votes.dislike}
+			</button>
 		</div>
 	);
 }
