@@ -18,20 +18,20 @@
 import { useState } from "react";
 
 function App() {
-	const [activeTab, setActiveTab] = useState("home");
+	const [visible, setVisible] = useState(false);
+	const [password, setPassword] = useState("");
 
 	return (
 		<div>
-			<div>
-				<button onClick={() => setActiveTab("home")}>Home</button>
-				<button onClick={() => setActiveTab("about")}>About</button>
-				<button onClick={() => setActiveTab("contact")}>Contact</button>
-			</div>
-			<div style={{ marginTop: "10px" }}>
-				{activeTab === "home" && <p>Witamy na stronie głównej!</p>}
-				{activeTab === "about" && <p>To jest zakładka "O nas".</p>}
-				{activeTab === "contact" && <p>Skontaktuj się z nami tutaj.</p>}
-			</div>
+			<input
+				type={visible ? "text" : "password"}
+				value={password}
+				onChange={(e) => setPassword(e.target.value)}
+				placeholder='Hasło'
+			/>
+			<button onClick={() => setVisible(!visible)}>
+				{visible ? "🙈" : "👁️"}
+			</button>
 		</div>
 	);
 }
