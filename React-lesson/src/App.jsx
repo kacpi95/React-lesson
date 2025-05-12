@@ -16,22 +16,29 @@
 // export default App;
 
 import { useState } from 'react';
-
 function App() {
-  const [visible, setVisible] = useState(false);
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = () => {
+    if (!email.includes('@')) {
+      setError('Wpisz poprawny e-mail!');
+    } else {
+      setError('');
+      alert(`Wysłano: ${email}`);
+    }
+  };
 
   return (
     <div>
       <input
-        type={visible ? 'text' : 'password'}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder='Hasło'
+        type='email'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder='Twój e-mail'
       />
-      <button onClick={() => setVisible(!visible)}>
-        {visible ? '🙈' : '👁️'}
-      </button>
+      <button onClick={handleSubmit}>Wyślij</button>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </div>
   );
 }
