@@ -17,28 +17,16 @@
 
 import { useState } from 'react';
 function App() {
-  const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const [text, setText] = useState('Kliknij mnie!');
 
-  const handleSubmit = () => {
-    if (!email.includes('@')) {
-      setError('Wpisz poprawny e-mail!');
-    } else {
-      setError('');
-      alert(`Wysłano: ${email}`);
-    }
+  const handleClick = () => {
+    setText('Kliknięto!');
   };
 
   return (
     <div>
-      <input
-        type='email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder='Twój e-mail'
-      />
-      <button onClick={handleSubmit}>Wyślij</button>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <p>{text}</p>
+      <button onClick={handleClick}>Kliknij</button>
     </div>
   );
 }
