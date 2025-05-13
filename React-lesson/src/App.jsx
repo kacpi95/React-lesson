@@ -17,16 +17,13 @@
 
 import { useState } from 'react';
 function App() {
-  const [text, setText] = useState('Kliknij mnie!');
-
-  const handleClick = () => {
-    setText('Kliknięto!');
-  };
+  const [color, setColor] = useState('white');
 
   return (
-    <div>
-      <p>{text}</p>
-      <button onClick={handleClick}>Kliknij</button>
+    <div style={{ backgroundColor: color, padding: '20px' }}>
+      <button onClick={() => setColor('lightblue')}>Niebieski</button>
+      <button onClick={() => setColor('lightgreen')}>Zielony</button>
+      <button onClick={() => setColor('white')}>Reset</button>
     </div>
   );
 }
