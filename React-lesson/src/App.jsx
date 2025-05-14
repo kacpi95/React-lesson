@@ -17,13 +17,15 @@
 
 import { useState } from 'react';
 function App() {
-  const [color, setColor] = useState('white');
+  const [steps, setSteps] = useState(0);
 
   return (
-    <div style={{ backgroundColor: color, padding: '20px' }}>
-      <button onClick={() => setColor('lightblue')}>Niebieski</button>
-      <button onClick={() => setColor('lightgreen')}>Zielony</button>
-      <button onClick={() => setColor('white')}>Reset</button>
+    <div>
+      <p>Kroki: {steps}</p>
+      <button onClick={() => setSteps(steps + 1)}>Dodaj</button>
+      <button onClick={() => setSteps(steps - 1)} disabled={steps === 0}>
+        Odejmij
+      </button>
     </div>
   );
 }
