@@ -58,28 +58,61 @@
 //   );
 // }
 
+// import { useState, useEffect } from 'react';
+
+// function App() {
+//   const [user, setUser] = useState({});
+
+//   useEffect(() => {
+//     fetch('https://jsonplaceholder.typicode.com/users/1')
+//       .then((res) => res.json())
+//       .then((res) => setUser(res));
+//   }, []);
+
+//   function handleChange(id) {
+//     const target = id.target.value;
+//     fetch(`https://jsonplaceholder.typicode.com/users/${target}`).then((res) =>
+//       res.json().then((res) => setUser(res))
+//     );
+//   }
+
+//   return (
+//     <>
+//       <h1>Dane osobowe </h1>
+//       <select onChange={handleChange}>
+//         <option value='1'>Użytkownik 1</option>
+//         <option value='2'>Użytkownik 2</option>
+//         <option value='3'>Użytkownik 3</option>
+//         <option value='4'>Użytkownik 4</option>
+//         <option value='5'>Użytkownik 5</option>
+//       </select>
+//       <h2>Username: {user.username}</h2>
+//       <h2>Email: {user.email}</h2>
+//       <h2>Miasto: {user?.address?.city}</h2>
+//     </>
+//   );
+// }
+// export default App;
+
 import { useState, useEffect } from 'react';
 
-function App() {
+export default function App() {
   const [user, setUser] = useState({});
+  const [activeUserIndex, setActiveUserIndex] = useState('3');
 
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/users/1')
+    fetch(`https://jsonplaceholder.typicode.com/users/${activeUserIndex}`)
       .then((res) => res.json())
       .then((res) => setUser(res));
-  }, []);
-
-  function handleChange(id) {
-    const target = id.target.value;
-    fetch(`https://jsonplaceholder.typicode.com/users/${target}`).then((res) =>
-      res.json().then((res) => setUser(res))
-    );
-  }
+  }, [activeUserIndex]);
 
   return (
     <>
       <h1>Dane osobowe </h1>
-      <select onChange={handleChange}>
+      <select
+        value={activeUserIndex}
+        onChange={(e) => setActiveUserIndex(e.target.value)}
+      >
         <option value='1'>Użytkownik 1</option>
         <option value='2'>Użytkownik 2</option>
         <option value='3'>Użytkownik 3</option>
@@ -92,4 +125,3 @@ function App() {
     </>
   );
 }
-export default App;
