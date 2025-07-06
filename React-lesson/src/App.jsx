@@ -1,61 +1,95 @@
-import { useState } from 'react';
-import styles from './styles/global.module.scss';
-import Header from './components/header/header';
-import Form from './components/form/Form';
-import Lists from './components/lists/Lists';
+// import { useState } from 'react';
+// import styles from './styles/global.module.scss';
+// import Header from './components/header/header';
+// import Form from './components/form/Form';
+// import Lists from './components/lists/Lists';
+
+// function App() {
+//   const [form, setForm] = useState(false);
+//   const [isValue, setValue] = useState('');
+//   const [tasks, setTasks] = useState([
+//     { id: 1, name: 'uczyć sie', done: false },
+//     { id: 2, name: 'Robić pranie', done: false },
+//   ]);
+//   const handleAddInput = () => {
+//     setForm((prev) => !prev);
+//   };
+//   const handleAddValue = (e) => {
+//     e.preventDefault();
+//     const newTask = {
+//       id: Date.now(),
+//       name: isValue,
+//       done: false,
+//     };
+
+//     setTasks((prev) => [newTask, ...prev]);
+//     setValue('');
+//   };
+//   const handleDone = (id) => {
+//     setTasks((prev) =>
+//       prev.map((task) =>
+//         task.id === id ? { ...task, done: !task.done } : task
+//       )
+//     );
+//   };
+//   const handleRemove = (itemToRemove) => {
+//     setTasks((prev) => prev.filter((item) => item.id !== itemToRemove.id));
+//   };
+
+//   return (
+//     <main>
+//       <div className={styles.container}>
+//         <Header tasks={tasks} handleAddInput={handleAddInput} />
+//         <Form
+//           form={form}
+//           isValue={isValue}
+//           setValue={setValue}
+//           handleAddValue={handleAddValue}
+//         />
+//         <div>
+//           <Lists
+//             tasks={tasks}
+//             handleDone={handleDone}
+//             handleRemove={handleRemove}
+//           />
+//         </div>
+//       </div>
+//     </main>
+//   );
+// }
+
+import { useState, useEffect } from 'react';
 
 function App() {
-  const [form, setForm] = useState(false);
-  const [isValue, setValue] = useState('');
-  const [tasks, setTasks] = useState([
-    { id: 1, name: 'uczyć sie', done: false },
-    { id: 2, name: 'Robić pranie', done: false },
-  ]);
-  const handleAddInput = () => {
-    setForm((prev) => !prev);
-  };
-  const handleAddValue = (e) => {
-    e.preventDefault();
-    const newTask = {
-      id: Date.now(),
-      name: isValue,
-      done: false,
-    };
+  const [user, setUser] = useState({});
 
-    setTasks((prev) => [newTask, ...prev]);
-    setValue('');
-  };
-  const handleDone = (id) => {
-    setTasks((prev) =>
-      prev.map((task) =>
-        task.id === id ? { ...task, done: !task.done } : task
-      )
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users/1')
+      .then((res) => res.json())
+      .then((res) => setUser(res));
+  }, []);
+
+  function handleChange(id) {
+    const target = id.target.value;
+    fetch(`https://jsonplaceholder.typicode.com/users/${target}`).then((res) =>
+      res.json().then((res) => setUser(res))
     );
-  };
-  const handleRemove = (itemToRemove) => {
-    setTasks((prev) => prev.filter((item) => item.id !== itemToRemove.id));
-  };
+  }
 
   return (
-    <main>
-      <div className={styles.container}>
-        <Header tasks={tasks} handleAddInput={handleAddInput} />
-        <Form
-          form={form}
-          isValue={isValue}
-          setValue={setValue}
-          handleAddValue={handleAddValue}
-        />
-        <div>
-          <Lists
-            tasks={tasks}
-            handleDone={handleDone}
-            handleRemove={handleRemove}
-          />
-        </div>
-      </div>
-    </main>
+    <>
+      <h1>Dane osobowe </h1>
+      <select onChange={handleChange}>
+        <option value='1'>Użytkownik 1</option>
+        <option value='2'>Użytkownik 2</option>
+        <option value='3'>Użytkownik 3</option>
+        <option value='4'>Użytkownik 4</option>
+        <option value='5'>Użytkownik 5</option>
+      </select>
+      <h2>Username: {user.username}</h2>
+      <h2>Email: {user.email}</h2>
+      <h2>Miasto: {user?.address?.city}</h2>
+    </>
   );
 }
-
 export default App;
