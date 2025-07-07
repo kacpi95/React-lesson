@@ -94,34 +94,55 @@
 // }
 // export default App;
 
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
+
+// export default function App() {
+//   const [user, setUser] = useState({});
+//   const [activeUserIndex, setActiveUserIndex] = useState('3');
+
+//   useEffect(() => {
+//     fetch(`https://jsonplaceholder.typicode.com/users/${activeUserIndex}`)
+//       .then((res) => res.json())
+//       .then((res) => setUser(res));
+//   }, [activeUserIndex]);
+
+//   return (
+//     <>
+//       <h1>Dane osobowe </h1>
+//       <select
+//         value={activeUserIndex}
+//         onChange={(e) => setActiveUserIndex(e.target.value)}
+//       >
+//         <option value='1'>Użytkownik 1</option>
+//         <option value='2'>Użytkownik 2</option>
+//         <option value='3'>Użytkownik 3</option>
+//         <option value='4'>Użytkownik 4</option>
+//         <option value='5'>Użytkownik 5</option>
+//       </select>
+//       <h2>Username: {user.username}</h2>
+//       <h2>Email: {user.email}</h2>
+//       <h2>Miasto: {user?.address?.city}</h2>
+//     </>
+//   );
+// }
+
+import { useState } from 'react';
+import { Person } from './components/Person/Person';
 
 export default function App() {
-  const [user, setUser] = useState({});
-  const [activeUserIndex, setActiveUserIndex] = useState('3');
+  const [isSectionOpened, setIsSectionOpened] = useState(true);
 
-  useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${activeUserIndex}`)
-      .then((res) => res.json())
-      .then((res) => setUser(res));
-  }, [activeUserIndex]);
+  function handleClick() {
+    return setIsSectionOpened((prevIsSectionOpened) => !prevIsSectionOpened);
+  }
 
   return (
     <>
-      <h1>Dane osobowe </h1>
-      <select
-        value={activeUserIndex}
-        onChange={(e) => setActiveUserIndex(e.target.value)}
-      >
-        <option value='1'>Użytkownik 1</option>
-        <option value='2'>Użytkownik 2</option>
-        <option value='3'>Użytkownik 3</option>
-        <option value='4'>Użytkownik 4</option>
-        <option value='5'>Użytkownik 5</option>
-      </select>
-      <h2>Username: {user.username}</h2>
-      <h2>Email: {user.email}</h2>
-      <h2>Miasto: {user?.address?.city}</h2>
+      <h1>Odliczanie w consoli</h1>
+      <button onClick={handleClick}>
+        {isSectionOpened ? 'Schowaj' : 'Pokaż'}
+      </button>
+      {isSectionOpened && <Person />}
     </>
   );
 }
