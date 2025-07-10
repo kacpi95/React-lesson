@@ -147,17 +147,44 @@
 //   );
 // }
 
-import { useState, useMemo } from 'react';
-import { getNumberOfCountries } from './components/getNumberOfCountries/getNumberOfCountries';
+import { useMemo, useState } from 'react';
+
+const countries = [
+  { name: 'Polska', continent: 'Europa' },
+  { name: 'Chiny', continent: 'Azja' },
+  { name: 'Kongo', continent: 'Afryka' },
+  { name: 'Francja', continent: 'Europa' },
+  { name: 'Australia', continent: 'Australia' },
+  { name: 'Włochy', continent: 'Europa' },
+];
 
 export default function App() {
+  const [filter, setFilter] = useState('Dowolny');
   const [count, setCount] = useState(0);
-  const numberOfCountries = useMemo(() => getNumberOfCountries(), []);
+
+  const filteredCountries = useMemo(
+    () =>
+      filter === 'Dowolny'
+        ? countries
+        : countries.filter((country) => country.continent === filter),
+    [filter]
+  );
 
   return (
     <>
-      <h1>Podróże małe i duże:</h1>
-      <h2>Ilość krajów na świecie: {numberOfCountries}</h2>
+      <h1>Lista krajów:</h1>
+      <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <option value='Dowolny'>Dowolny Kontynent</option>
+        <option value='Azja'>Azja</option>
+        <option value='Afryka'>Afryka</option>
+        <option value='Australia'>Australia</option>
+        <option value='Europa'>Europa</option>
+      </select>
+      <ul>
+        {filteredCountries.map((country) => (
+          <li key={country.name}>{country.name}</li>
+        ))}
+      </ul>
       <h2>Ilość podróży dookoła świata: {count}</h2>
       <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
     </>
