@@ -126,23 +126,40 @@
 //   );
 // }
 
-import { useState } from 'react';
-import { Person } from './components/Person/Person';
+// import { useState } from 'react';
+// import { Person } from './components/Person/Person';
+
+// export default function App() {
+//   const [isSectionOpened, setIsSectionOpened] = useState(true);
+
+//   function handleClick() {
+//     return setIsSectionOpened((prevIsSectionOpened) => !prevIsSectionOpened);
+//   }
+
+//   return (
+//     <>
+//       <h1>Odliczanie w consoli</h1>
+//       <button onClick={handleClick}>
+//         {isSectionOpened ? 'Schowaj' : 'Pokaż'}
+//       </button>
+//       {isSectionOpened && <Person />}
+//     </>
+//   );
+// }
+
+import { useState, useMemo } from 'react';
+import { getNumberOfCountries } from './components/getNumberOfCountries/getNumberOfCountries';
 
 export default function App() {
-  const [isSectionOpened, setIsSectionOpened] = useState(true);
-
-  function handleClick() {
-    return setIsSectionOpened((prevIsSectionOpened) => !prevIsSectionOpened);
-  }
+  const [count, setCount] = useState(0);
+  const numberOfCountries = useMemo(() => getNumberOfCountries(), []);
 
   return (
     <>
-      <h1>Odliczanie w consoli</h1>
-      <button onClick={handleClick}>
-        {isSectionOpened ? 'Schowaj' : 'Pokaż'}
-      </button>
-      {isSectionOpened && <Person />}
+      <h1>Podróże małe i duże:</h1>
+      <h2>Ilość krajów na świecie: {numberOfCountries}</h2>
+      <h2>Ilość podróży dookoła świata: {count}</h2>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
     </>
   );
 }
