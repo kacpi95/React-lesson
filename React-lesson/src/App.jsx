@@ -147,46 +147,65 @@
 //   );
 // }
 
-import { useMemo, useState } from 'react';
+// import { useMemo, useState } from 'react';
 
-const countries = [
-  { name: 'Polska', continent: 'Europa' },
-  { name: 'Chiny', continent: 'Azja' },
-  { name: 'Kongo', continent: 'Afryka' },
-  { name: 'Francja', continent: 'Europa' },
-  { name: 'Australia', continent: 'Australia' },
-  { name: 'Włochy', continent: 'Europa' },
-];
+// const countries = [
+//   { name: 'Polska', continent: 'Europa' },
+//   { name: 'Chiny', continent: 'Azja' },
+//   { name: 'Kongo', continent: 'Afryka' },
+//   { name: 'Francja', continent: 'Europa' },
+//   { name: 'Australia', continent: 'Australia' },
+//   { name: 'Włochy', continent: 'Europa' },
+// ];
+
+// export default function App() {
+//   const [filter, setFilter] = useState('Dowolny');
+//   const [count, setCount] = useState(0);
+
+//   const filteredCountries = useMemo(
+//     () =>
+//       filter === 'Dowolny'
+//         ? countries
+//         : countries.filter((country) => country.continent === filter),
+//     [filter]
+//   );
+
+//   return (
+//     <>
+//       <h1>Lista krajów:</h1>
+//       <select value={filter} onChange={(e) => setFilter(e.target.value)}>
+//         <option value='Dowolny'>Dowolny Kontynent</option>
+//         <option value='Azja'>Azja</option>
+//         <option value='Afryka'>Afryka</option>
+//         <option value='Australia'>Australia</option>
+//         <option value='Europa'>Europa</option>
+//       </select>
+//       <ul>
+//         {filteredCountries.map((country) => (
+//           <li key={country.name}>{country.name}</li>
+//         ))}
+//       </ul>
+//       <h2>Ilość podróży dookoła świata: {count}</h2>
+//       <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+//     </>
+//   );
+// }
+
+import { useState, useCallback } from 'react';
+import { List } from './components/List/List';
 
 export default function App() {
-  const [filter, setFilter] = useState('Dowolny');
-  const [count, setCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const filteredCountries = useMemo(
-    () =>
-      filter === 'Dowolny'
-        ? countries
-        : countries.filter((country) => country.continent === filter),
-    [filter]
-  );
+  const oneRender = useCallback(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
-      <h1>Lista krajów:</h1>
-      <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-        <option value='Dowolny'>Dowolny Kontynent</option>
-        <option value='Azja'>Azja</option>
-        <option value='Afryka'>Afryka</option>
-        <option value='Australia'>Australia</option>
-        <option value='Europa'>Europa</option>
-      </select>
-      <ul>
-        {filteredCountries.map((country) => (
-          <li key={country.name}>{country.name}</li>
-        ))}
-      </ul>
-      <h2>Ilość podróży dookoła świata: {count}</h2>
-      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+      <h1>List użytkowników</h1>
+      {isLoading && <h2>Ładowanie...</h2>}
+      <List onSuccess={oneRender} />
     </>
   );
 }
