@@ -210,27 +210,56 @@
 //   );
 // }
 
-import { useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { people as initialArray } from './people';
+
 export default function App() {
-  const videoRef = useRef(null);
+  const [people, setPeople] = useState(initialArray);
+  const [newName, setNewName] = useState('');
+  const lastAddedPersonIdRef = useRef(null);
+  const lastItemRef = useRef(null);
 
-  function handlePauseClick() {
-    videoRef.current.pause();
-  }
+  useEffect(() => {
+    lastItemRef.current && lastItemRef.current.scrollIntoView();
+  }, [people]);
 
-  function handlePlayClick() {
-    videoRef.current.play();
-  }
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const newPerson = {
+      name: newName,
+      id: people.length + 1,
+    };
+    setPeople([...people, newPerson]);
+    setNewName('');
+    lastAddedPersonIdRef.current = newPerson.id;
+  };
+
+  const handleInputChange = (e) => {
+    setNewName(e.target.value);
+  };
 
   return (
     <>
-      <video ref={videoRef} width='200'>
-        <source src='https://zrozumiecreact.pl/cat.mp4' type='video/mp4' />
-      </video>
-      <div>
-        <button onClick={handlePauseClick}>Pause</button>
-        <button onClick={handlePlayClick}>Play</button>
-      </div>
+      <form onSubmit={handleFormSubmit}>
+        <label>
+          Dodaj nowe imię:
+          <input type='text' value={newName} onChange={handleInputChange} />
+        </label>
+        <button type='submit'>Dodaj</button>
+      </form>
+      <h1>Lista osób:</h1>
+      <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>
+        {people.map((person) => (
+          <li
+            key={person.id}
+            ref={
+              lastAddedPersonIdRef.current === person.id ? lastItemRef : null
+            }
+          >
+            {person.name}
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
