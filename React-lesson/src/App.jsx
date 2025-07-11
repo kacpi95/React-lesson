@@ -191,21 +191,44 @@
 //   );
 // }
 
-import { useState, useCallback } from 'react';
-import { List } from './components/List/List';
+// import { useState, useCallback } from 'react';
+// import { List } from './components/List/List';
+
+// export default function App() {
+//   const [isLoading, setIsLoading] = useState(true);
+
+//   const oneRender = useCallback(() => {
+//     setIsLoading(false);
+//   }, []);
+
+//   return (
+//     <>
+//       <h1>List użytkowników</h1>
+//       {isLoading && <h2>Ładowanie...</h2>}
+//       <List onSuccess={oneRender} />
+//     </>
+//   );
+// }
+
+import { useState } from 'react';
+import { Person } from './components/Person/Person';
+
+const person = {
+  name: 'Jan',
+  yearOfBirth: 1990,
+};
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const oneRender = useCallback(() => {
-    setIsLoading(false);
-  }, []);
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>List użytkowników</h1>
-      {isLoading && <h2>Ładowanie...</h2>}
-      <List onSuccess={oneRender} />
+      <h1>Dane osobowe:</h1>
+      <Person person={person} />
+      <hr />
+      <h2>Stan licznika: {count}</h2>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
+      <h3>(Kliknij, żeby wywołać render)</h3>
     </>
   );
 }
