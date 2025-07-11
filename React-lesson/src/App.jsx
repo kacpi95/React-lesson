@@ -210,28 +210,42 @@
 //   );
 // }
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 
 export default function App() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [person, setPerson] = useState(null);
   const inputRef = useRef(null);
+  const checkboxRef = useRef(null);
 
-  useEffect(() => {
-    if (isFormOpen) {
-      inputRef.current.focus();
-    }
-  }, [isFormOpen]);
+  function handleSubmit(e) {
+    e.preventDefault();
+    setPerson({
+      name: inputRef.current.value,
+      isAdmin: checkboxRef.current.checked,
+    });
+  }
 
   return (
     <>
-      <h1>Formularz:</h1>
-      {isFormOpen ? (
-        <form>
-          <input ref={inputRef} placeholder='Imię' />
-        </form>
-      ) : (
-        <button onClick={() => setIsFormOpen(true)}>Pokaż formularz</button>
+      <h1>Dane osobowe:</h1>
+      {person && (
+        <>
+          <h2>{person.name}</h2>
+          <h3>{person.isAdmin ? 'Administrator' : 'Użytkownik'}</h3>
+        </>
       )}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input ref={inputRef} placeholder='Imię' />
+        </div>
+        <div>
+          <label htmlFor='admin'>
+            Admin:
+            <input ref={checkboxRef} id='admin' type='checkbox' />
+          </label>
+        </div>
+        <button>Zapisz</button>
+      </form>
     </>
   );
 }
