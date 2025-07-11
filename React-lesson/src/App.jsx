@@ -217,13 +217,15 @@ const person = {
   name: 'Jan',
   yearOfBirth: 1990,
 };
+const subheading = <h3>Administrator</h3>;
+
 export default function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
       <h1>Dane osobowe:</h1>
-      <PersonMemo person={person} />
+      <PersonMemo person={person}>{subheading}</PersonMemo>
       <hr />
       <h2>Stan licznika: {count}</h2>
       <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
