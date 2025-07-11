@@ -211,20 +211,19 @@
 // }
 
 import { useState } from 'react';
-import { Person } from './components/Person/Person';
+import { PersonMemo } from './components/Person/Person';
 
 const person = {
   name: 'Jan',
   yearOfBirth: 1990,
 };
-
 export default function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
       <h1>Dane osobowe:</h1>
-      <Person person={person} />
+      <PersonMemo person={person} />
       <hr />
       <h2>Stan licznika: {count}</h2>
       <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
