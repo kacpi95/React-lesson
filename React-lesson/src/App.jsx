@@ -210,26 +210,28 @@
 //   );
 // }
 
-import { useState } from 'react';
-import { PersonMemo } from './components/Person/Person';
-
-const person = {
-  name: 'Jan',
-  yearOfBirth: 1990,
-};
-const subheading = <h3>Administrator</h3>;
+import { useState, useRef, useEffect } from 'react';
 
 export default function App() {
-  const [count, setCount] = useState(0);
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isFormOpen) {
+      inputRef.current.focus();
+    }
+  }, [isFormOpen]);
 
   return (
     <>
-      <h1>Dane osobowe:</h1>
-      <PersonMemo person={person}>{subheading}</PersonMemo>
-      <hr />
-      <h2>Stan licznika: {count}</h2>
-      <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
-      <h3>(Kliknij, żeby wywołać render)</h3>
+      <h1>Formularz:</h1>
+      {isFormOpen ? (
+        <form>
+          <input ref={inputRef} placeholder='Imię' />
+        </form>
+      ) : (
+        <button onClick={() => setIsFormOpen(true)}>Pokaż formularz</button>
+      )}
     </>
   );
 }
