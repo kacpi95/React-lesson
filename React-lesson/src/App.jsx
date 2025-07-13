@@ -209,21 +209,19 @@
 //     </>
 //   );
 // }
-import { Link } from "./components/Link/Link";
+import { StrongLink } from './components/StrongLink/StrongLink';
 
 export default function App() {
-    const defaultLinkConfig = {
-        text: "Strona Zrozumieć React",
-        href: "https://zrozumiecreact.pl",
-        shouldOpenInNewTab: false
-    };
+  const defaultLinkConfig = {
+    text: 'Strona Zrozumieć React',
+    href: 'https://zrozumiecreact.pl',
+    shouldOpenInNewTab: false,
+  };
 
-    return (<>
-        <p>
-            Prosty komponent z linkiem.
-        </p>
-        <Link 
-            {...defaultLinkConfig}
-        />
-    </>);
+  return (
+    <>
+      <p>Prosty komponent z linkiem.</p>
+      <StrongLink {...defaultLinkConfig} />
+    </>
+  );
 }
