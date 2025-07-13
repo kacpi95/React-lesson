@@ -236,17 +236,23 @@ import { Footer } from './components/Footer/Footer';
 import { NameContext } from './components/NameContext/NameContext';
 
 export default function App() {
-  const [name, setName] = useState('Jan');
+  const [selectedName, setSelectedName] = useState('Jan');
 
   return (
-    <NameContext.Provider value={name}>
-      <select value={name} onChange={(e) => setName(e.target.value)}>
+    <>
+      <select
+        value={selectedName}
+        onChange={(e) => setSelectedName(e.target.value)}
+      >
         <option value='Jan'>Jan</option>
         <option value='Janina'>Janina</option>
         <option value='Ewa'>Ewa</option>
       </select>
-      <Article name={name} />
-      <Footer />
-    </NameContext.Provider>
+      <h1>Witaj {selectedName}!</h1>
+      <NameContext.Provider value={selectedName}>
+        <Article />
+        <Footer />
+      </NameContext.Provider>
+    </>
   );
 }
