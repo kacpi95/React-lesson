@@ -1,9 +1,9 @@
-import { Link } from '../Link/Link';
+// import { Link } from '../Link/Link';
 
-export function StrongLink(props) {
-  return (
-    <strong>
-      <Link {...props} />
-    </strong>
-  );
-}
+// export function StrongLink(props) {
+//   return (
+//     <strong>
+//       <Link {...props} />
+//     </strong>
+//   );
+// }

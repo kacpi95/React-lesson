@@ -209,23 +209,40 @@
 //     </>
 //   );
 // }
-import { StrongLink } from './components/StrongLink/StrongLink';
+// import { StrongLink } from './components/StrongLink/StrongLink';
+
+// export default function App() {
+//   const defaultLinkConfig = {
+//     text: 'Strona Zrozumieć React',
+//     href: 'https://zrozumiecreact.pl',
+//     shouldOpenInNewTab: false,
+//   };
+
+//   return (
+//     <>
+//       <p>Prosty komponent z linkami.</p>
+//       <StrongLink {...defaultLinkConfig} text='Sprawdź teraz' />
+//       <p>Wykorzystamy teraz kilka paragrafów.</p>
+//       <StrongLink {...defaultLinkConfig} />
+//       <p>Dzięki temu łatwiej będzie dodać nam kilka linków</p>
+//       <StrongLink {...defaultLinkConfig} />
+//     </>
+//   );
+// }
+
+import { useContext } from 'react';
+import { Article } from './components/Article/Article';
+import { Footer } from './components/Footer/Footer';
+import { NameContext } from './components/NameContext/NameContext';
 
 export default function App() {
-  const defaultLinkConfig = {
-    text: 'Strona Zrozumieć React',
-    href: 'https://zrozumiecreact.pl',
-    shouldOpenInNewTab: false,
-  };
+  const name = useContext(NameContext);
 
   return (
     <>
-      <p>Prosty komponent z linkami.</p>
-      <StrongLink {...defaultLinkConfig} text='Sprawdź teraz' />
-      <p>Wykorzystamy teraz kilka paragrafów.</p>
-      <StrongLink {...defaultLinkConfig} />
-      <p>Dzięki temu łatwiej będzie dodać nam kilka linków</p>
-      <StrongLink {...defaultLinkConfig} />
+      <h1>Witaj {name}!</h1>
+      <Article />
+      <Footer />
     </>
   );
 }
