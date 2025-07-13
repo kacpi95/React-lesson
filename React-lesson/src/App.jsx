@@ -209,57 +209,21 @@
 //     </>
 //   );
 // }
-
-import { useState, useRef, useEffect } from 'react';
-import { people as initialArray } from './people';
+import { Link } from "./components/Link/Link";
 
 export default function App() {
-  const [people, setPeople] = useState(initialArray);
-  const [newName, setNewName] = useState('');
-  const lastAddedPersonIdRef = useRef(null);
-  const lastItemRef = useRef(null);
-
-  useEffect(() => {
-    lastItemRef.current && lastItemRef.current.scrollIntoView();
-  }, [people]);
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const newPerson = {
-      name: newName,
-      id: people.length + 1,
+    const defaultLinkConfig = {
+        text: "Strona Zrozumieć React",
+        href: "https://zrozumiecreact.pl",
+        shouldOpenInNewTab: false
     };
-    setPeople([...people, newPerson]);
-    setNewName('');
-    lastAddedPersonIdRef.current = newPerson.id;
-  };
 
-  const handleInputChange = (e) => {
-    setNewName(e.target.value);
-  };
-
-  return (
-    <>
-      <form onSubmit={handleFormSubmit}>
-        <label>
-          Dodaj nowe imię:
-          <input type='text' value={newName} onChange={handleInputChange} />
-        </label>
-        <button type='submit'>Dodaj</button>
-      </form>
-      <h1>Lista osób:</h1>
-      <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>
-        {people.map((person) => (
-          <li
-            key={person.id}
-            ref={
-              lastAddedPersonIdRef.current === person.id ? lastItemRef : null
-            }
-          >
-            {person.name}
-          </li>
-        ))}
-      </ul>
-    </>
-  );
+    return (<>
+        <p>
+            Prosty komponent z linkiem.
+        </p>
+        <Link 
+            {...defaultLinkConfig}
+        />
+    </>);
 }
