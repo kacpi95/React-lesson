@@ -1,15 +1,10 @@
-import { useContext } from 'react';
-import { NameContext } from '../NameContext/NameContext';
+import { ThemedSpan } from '../ThemedSpan/ThemedSpan';
 
 export function Footer() {
-  const name = useContext(NameContext);
-
   return (
     <footer>
-      <p>Masz pytania {name}? Pisz do nas na mail:</p>
-      <a href='mailto:kontakt@jakzaczacprogramowac.pl'>
-        kontakt@jakzaczacprogramowac.pl
-      </a>
+      <ThemedSpan>Uwaga!</ThemedSpan> Co jeśli chcielibyśmy nadpisać wartość
+      pobieraną z <ThemedSpan>useContext</ThemedSpan>?
     </footer>
   );
 }

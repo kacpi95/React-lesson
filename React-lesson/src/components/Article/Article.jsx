@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { NameContext } from '../NameContext/NameContext';
+import { ThemedSpan } from '../ThemedSpan/ThemedSpan';
 
 export function Article() {
-  const name = useContext(NameContext);
-
   return (
     <article>
-      <p>{name}, w tym krótkim zadaniu przećwiczymy użycie useContext.</p>
+      <p>
+        Dzięki <ThemedSpan>useContext</ThemedSpan> możemy przekazać tę samą
+        wartość w wiele miejsc jednocześnie.
+      </p>
     </article>
   );
 }

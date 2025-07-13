@@ -231,28 +231,33 @@
 // }
 
 import { useState } from 'react';
+import { ColorContext } from './components/ColorContext/ColorContext';
+import { ThemedSpan } from './components/ThemedSpan/ThemedSpan';
 import { Article } from './components/Article/Article';
 import { Footer } from './components/Footer/Footer';
-import { NameContext } from './components/NameContext/NameContext';
 
 export default function App() {
-  const [selectedName, setSelectedName] = useState('Jan');
+  const [selectedColor, setSelectedColor] = useState('blue');
 
   return (
     <>
       <select
-        value={selectedName}
-        onChange={(e) => setSelectedName(e.target.value)}
+        value={selectedColor}
+        onChange={(e) => setSelectedColor(e.target.value)}
       >
-        <option value='Jan'>Jan</option>
-        <option value='Janina'>Janina</option>
-        <option value='Ewa'>Ewa</option>
+        <option value='blue'>Niebieski</option>
+        <option value='yellow'>Żółty</option>
+        <option value='green'>Zielony</option>
       </select>
-      <h1>Witaj {selectedName}!</h1>
-      <NameContext.Provider value={selectedName}>
+      <ColorContext.Provider value={selectedColor}>
+        <h1>
+          <ThemedSpan>Witaj!</ThemedSpan>
+        </h1>
         <Article />
+      </ColorContext.Provider>
+      <ColorContext.Provider value='red'>
         <Footer />
-      </NameContext.Provider>
+      </ColorContext.Provider>
     </>
   );
 }
