@@ -220,7 +220,11 @@ export default function App() {
 
   return (
     <>
-      <p>Prosty komponent z linkiem.</p>
+      <p>Prosty komponent z linkami.</p>
+      <StrongLink {...defaultLinkConfig} text='Sprawdź teraz' />
+      <p>Wykorzystamy teraz kilka paragrafów.</p>
+      <StrongLink {...defaultLinkConfig} />
+      <p>Dzięki temu łatwiej będzie dodać nam kilka linków</p>
       <StrongLink {...defaultLinkConfig} />
     </>
   );
