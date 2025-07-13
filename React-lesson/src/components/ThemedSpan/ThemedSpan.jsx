@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ColorContext } from '../ColorContext/ColorContext';
+import { ColorContext } from '../NameContext/NameContext';
 
 export function ThemedSpan({ children }) {
   const color = useContext(ColorContext);
