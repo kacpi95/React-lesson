@@ -230,19 +230,23 @@
 //   );
 // }
 
-import { useContext } from 'react';
+import { useState } from 'react';
 import { Article } from './components/Article/Article';
 import { Footer } from './components/Footer/Footer';
 import { NameContext } from './components/NameContext/NameContext';
 
 export default function App() {
-  const name = useContext(NameContext);
+  const [name, setName] = useState('Jan');
 
   return (
-    <>
-      <h1>Witaj {name}!</h1>
-      <Article />
+    <NameContext.Provider value={name}>
+      <select value={name} onChange={(e) => setName(e.target.value)}>
+        <option value='Jan'>Jan</option>
+        <option value='Janina'>Janina</option>
+        <option value='Ewa'>Ewa</option>
+      </select>
+      <Article name={name} />
       <Footer />
-    </>
+    </NameContext.Provider>
   );
 }
