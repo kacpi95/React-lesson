@@ -1,12 +1,12 @@
-import { useContext } from 'react';
-import { ColorContext } from '../NameContext/NameContext';
+// import { useContext } from 'react';
+// import { ColorContext } from '../NameContext/NameContext';
 
-export function ThemedSpan({ children }) {
-  const color = useContext(ColorContext);
+// export function ThemedSpan({ children }) {
+//   const color = useContext(ColorContext);
 
-  return (
-    <span style={{ color }}>
-      <i>{children}</i>
-    </span>
-  );
-}
+//   return (
+//     <span style={{ color }}>
+//       <i>{children}</i>
+//     </span>
+//   );
+// }

@@ -230,40 +230,56 @@
 //   );
 // }
 
+// import { useState } from 'react';
+// import { Article } from './components/Article/Article';
+// import { Footer } from './components/Footer/Footer';
+// import { NameContext } from './components/NameContext/NameContext';
+// import { ColorContext } from './components/ColorContext/ColorContext';
+
+// export default function App() {
+//   const [selectedName, setSelectedName] = useState('Jan');
+//   const [selectedColor, setSelectedColor] = useState('blue');
+
+//   return (
+//     <>
+//       <select
+//         value={selectedName}
+//         onChange={(e) => setSelectedName(e.target.value)}
+//       >
+//         <option value='Jan'>Jan</option>
+//         <option value='Janina'>Janina</option>
+//         <option value='Ewa'>Ewa</option>
+//       </select>
+//       <select
+//         value={selectedColor}
+//         onChange={(e) => setSelectedColor(e.target.value)}
+//       >
+//         <option value='blue'>Niebieski</option>
+//         <option value='yellow'>Żółty</option>
+//         <option value='green'>Zielony</option>
+//       </select>
+//       <ColorContext.Provider value={selectedColor}>
+//         <NameContext.Provider value={selectedName}>
+//           <Article />
+//           <Footer />
+//         </NameContext.Provider>
+//       </ColorContext.Provider>
+//     </>
+//   );
+// }
+
 import { useState } from 'react';
 import { Article } from './components/Article/Article';
 import { Footer } from './components/Footer/Footer';
-import { NameContext } from './components/NameContext/NameContext';
-import { ColorContext } from './components/ColorContext/ColorContext';
+import { NameStateContext } from './components/NameStateContext/NameStateContext';
 
 export default function App() {
-  const [selectedName, setSelectedName] = useState('Jan');
-  const [selectedColor, setSelectedColor] = useState('blue');
-
+  const [name, setName] = useState('Jan');
   return (
-    <>
-      <select
-        value={selectedName}
-        onChange={(e) => setSelectedName(e.target.value)}
-      >
-        <option value='Jan'>Jan</option>
-        <option value='Janina'>Janina</option>
-        <option value='Ewa'>Ewa</option>
-      </select>
-      <select
-        value={selectedColor}
-        onChange={(e) => setSelectedColor(e.target.value)}
-      >
-        <option value='blue'>Niebieski</option>
-        <option value='yellow'>Żółty</option>
-        <option value='green'>Zielony</option>
-      </select>
-      <ColorContext.Provider value={selectedColor}>
-        <NameContext.Provider value={selectedName}>
-          <Article />
-          <Footer />
-        </NameContext.Provider>
-      </ColorContext.Provider>
-    </>
+    <NameStateContext.Provider value={[name, setName]}>
+      <Article />
+      <hr />
+      <Footer />
+    </NameStateContext.Provider>
   );
 }

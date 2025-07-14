@@ -1,19 +1,14 @@
 import { useContext } from 'react';
-import { NameContext } from '../NameContext/NameContext';
-import { ColorContext } from '../ColorContext/ColorContext';
+import { NameStateContext } from '../NameStateContext/NameStateContext';
 
 export function Footer() {
-  const name = useContext(NameContext);
-  const color = useContext(ColorContext);
+  const [name, setName] = useContext(NameStateContext);
 
   return (
     <footer>
-      <p>
-        Masz pytania <span style={{ color }}>{name}</span>? Pisz do nas na mail:
-      </p>
-      <a href='mailto:kontakt@jakzaczacprogramowac.pl'>
-        kontakt@jakzaczacprogramowac.pl
-      </a>
+      <p>Chciałbyś zmienić swoje imię, {name}?</p>
+      <p>Wpisz je poniżej!</p>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
     </footer>
   );
 }

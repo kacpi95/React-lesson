@@ -1,16 +1,13 @@
 import { useContext } from 'react';
-import { NameContext } from '../NameContext/NameContext';
-import { ColorContext } from '../ColorContext/ColorContext';
+import { NameStateContext } from '../NameStateContext/NameStateContext';
 
 export function Article() {
-  const name = useContext(NameContext);
-  const color = useContext(ColorContext);
+  const [name] = useContext(NameStateContext);
 
   return (
     <article>
       <p>
-        <span style={{ color }}>{name}</span>, w tym krótkim zadaniu
-        przećwiczymy użycie useContext.
+        Witaj {name}, w tym zadaniu przećwiczymy użycie useContext i useState.
       </p>
     </article>
   );
