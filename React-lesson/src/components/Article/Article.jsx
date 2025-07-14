@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { NameStateContext } from '../NameStateContext/NameStateContext';
+import { NameContext } from '../NameStateContext/NameStateContext';
 
 export function Article() {
-  const [name] = useContext(NameStateContext);
+  const [name] = useContext(NameContext);
 
   return (
     <article>

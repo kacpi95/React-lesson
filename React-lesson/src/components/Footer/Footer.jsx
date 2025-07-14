@@ -1,8 +1,9 @@
 import { useContext } from 'react';
-import { NameStateContext } from '../NameStateContext/NameStateContext';
+import { NameContext, SetNameContext } from '../NameStateContext/NameStateContext';
 
 export function Footer() {
-  const [name, setName] = useContext(NameStateContext);
+  const [name] = useContext(NameContext);
+  const [setName] = useContext(SetNameContext);
 
   return (
     <footer>

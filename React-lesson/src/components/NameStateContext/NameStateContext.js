@@ -1,3 +1,4 @@
 import { createContext } from 'react';
 
-export const NameStateContext = createContext(null);
+export const NameContext = createContext(null);
+export const SetNameContext = createContext(null);

@@ -271,15 +271,20 @@
 import { useState } from 'react';
 import { Article } from './components/Article/Article';
 import { Footer } from './components/Footer/Footer';
-import { NameStateContext } from './components/NameStateContext/NameStateContext';
+import {
+  NameContext,
+  SetNameContext,
+} from './components/NameStateContext/NameStateContext';
 
 export default function App() {
   const [name, setName] = useState('Jan');
   return (
-    <NameStateContext.Provider value={[name, setName]}>
+    <NameContext.Provider value={[name]}>
       <Article />
       <hr />
-      <Footer />
-    </NameStateContext.Provider>
+      <SetNameContext.Provider value={[setName]}>
+        <Footer />
+      </SetNameContext.Provider>
+    </NameContext.Provider>
   );
 }
